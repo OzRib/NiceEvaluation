@@ -5,6 +5,9 @@
     "name": "NiceEvaluation",
     "slug": "NiceEvaluation",
     "version": "1.0.0",
+    "ios":{
+      "requireFullScreen": true
+    },
     "assetBundlePatterns": [
       "**/*"
     ]
