@@ -1,0 +1,12 @@
+{
+  "name": "NiceEvaluation",
+  "displayName": "NiceEvaluation",
+  "expo": {
+    "name": "NiceEvaluation",
+    "slug": "NiceEvaluation",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
