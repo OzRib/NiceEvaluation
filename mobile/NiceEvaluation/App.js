@@ -1,11 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
+import * as ScreenOrientation from 'expo-screen-orientation';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View , StatusBar } from 'react-native';
+import Login from './pages/login';
+
+async function lockOrientation(){
+  await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
+}
 
 export default function App() {
+  lockOrientation()
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Login/>
       <StatusBar style="auto" />
     </View>
   );
