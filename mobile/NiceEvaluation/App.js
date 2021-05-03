@@ -1,7 +1,8 @@
 import * as ScreenOrientation from 'expo-screen-orientation';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View , StatusBar, Alert } from 'react-native';
 import Login from './pages/login';
+import Home from './pages/home';
 const network = require('./configs/network.json');
 
 async function lockOrientation(){
@@ -30,33 +31,43 @@ function sendLogin(login){
 
 async function tryLogin(login){
   const resp = await sendLogin(login)
-  if(resp.access == 'granted')
+  if(resp.access == 'granted'){
     Alert.alert('Acesso liberado')
-  else
+    return true
+  }else{
     Alert.alert('Acesso negado')
+    return false
+  }
 }
 
-export default function App() {
+function Page({logged, submit}){
+  if(logged)
+    return(<Home/>)
+  else{
+    return(
+      <Login 
+	onSubmit={
+	  async data=>{
+	    const logged = await tryLogin(data)
+	    submit(logged)
+	  }
+	}
+      />
+    )
+  }
+}
+
+export default function App(){
+  const [logged, setLogged] = useState(false)
   lockOrientation()
   return (
-    <View style={styles.container}>
-      <Login
-        onSubmit={
-          submit => {
-            tryLogin(submit)
-          }
-        }
+    <View>
+      <Page 
+	logged={logged}
+	submit={setLogged}
       />
       <StatusBar style="auto" />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
