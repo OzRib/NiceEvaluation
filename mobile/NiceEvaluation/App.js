@@ -10,7 +10,7 @@ async function lockOrientation(){
 }
 
 async function tryLogin(login){
-  const resp = await sendForm(network.uri, login)
+  const resp = await sendForm(network.url+'login.php', login)
   console.log(resp)
   if(resp.access == 'granted'){
     Alert.alert('Acesso liberado')
