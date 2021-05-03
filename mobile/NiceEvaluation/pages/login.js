@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Input from '../components/input';
 import Button from '../components/button';
 
-export default class Login extends Component{
+export default class Login extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -11,6 +11,7 @@ export default class Login extends Component{
             senha: null
         }
     }
+
     render(){
         return(
             <View style={styles.container}>
@@ -18,8 +19,7 @@ export default class Login extends Component{
                 <Text style={[styles.title, styles.topic]}>Login</Text>
                 <Input
                     textStyle={styles.text}
-                    placeholder='Nome de usuário ou Email'
-
+                    placeholder='Nome de usuário ou Email'                    
                     onChangeText={
                         value =>{
                             this.setState({nome:value})
@@ -45,6 +45,11 @@ export default class Login extends Component{
                         borderRadius: 20
                     }}
                     textStyle={styles.text}
+                    onPress={
+                        ()=>{
+                            this.props.onSubmit(this.state) || null
+                        }
+                    }
                 >
                     Entrar
                 </Button>
@@ -52,6 +57,7 @@ export default class Login extends Component{
         )
     }
 }
+
 const styles = StyleSheet.create({
     container:{
         color: 'white',
