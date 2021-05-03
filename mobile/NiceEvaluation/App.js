@@ -1,8 +1,7 @@
 import * as ScreenOrientation from 'expo-screen-orientation';
 import React, { useState } from 'react';
 import { StyleSheet, View , StatusBar, Alert } from 'react-native';
-import Login from './pages/login';
-import Home from './pages/home';
+import { Login, Home } from './pages';
 const network = require('./configs/network.json');
 
 async function lockOrientation(){
