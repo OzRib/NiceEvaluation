@@ -1,3 +1,4 @@
+//Imports and initiation variables
 import * as ScreenOrientation from 'expo-screen-orientation';
 import React, { useState } from 'react';
 import { StyleSheet, View , StatusBar, Alert } from 'react-native';
@@ -21,6 +22,7 @@ async function tryLogin(login){
   }
 }
 
+//Page rendered in app
 function Page({logged, submit}){
   if(logged)
     return(<Home/>)
@@ -38,6 +40,7 @@ function Page({logged, submit}){
   }
 }
 
+//App
 export default function App(){
   const [logged, setLogged] = useState(false)
   lockOrientation()
