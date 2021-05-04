@@ -1,3 +1,4 @@
+//Imports and initiation variables 
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Input from '../components/input';
@@ -19,7 +20,7 @@ export default class Login extends React.Component{
                 <Text style={[styles.title, styles.topic]}>Login</Text>
                 <Input
                     textStyle={styles.text}
-                    placeholder='Nome de usuário ou Email'                    
+                    placeholder='Nome de usuário ou Email'
                     onChangeText={
                         value =>{
                             this.setState({nome:value})
