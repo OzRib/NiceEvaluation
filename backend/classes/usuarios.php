@@ -62,23 +62,27 @@ class Usuario{
 class Professor extends Usuario{}
 
 class Administrador extends Usuario{
-	public function criarUsuario(Usuario $dados, bool $adm){
+	public function criarUsuario(Usuario $dados, bool $adm):bool{
 	
 	}
 
-	public function editarUsuario(Usuario $usuario, string $dado){
+	public function editarUsuario(Usuario $usuario, string $dado):bool{
 	
 	}
 
-	public function removerUsuario(string $email){
+	public function removerUsuario(string $email):bool{
 	
 	}
 
-	public function listarUsuarios(){
+	public function listarUsuarios():array{
 	
 	}
 
-	public function excluirQuestoes(array $ids){
+	public function criarQuestao(string $corpo, string $resposta, bool $objetiva, array|null $itens=null):bool{
+	
+	}
+
+	public function excluirQuestoes(array $ids):bool{
 		
 	}
 }
