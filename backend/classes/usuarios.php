@@ -1,5 +1,8 @@
 <?php
 declare(strict_types=1);
+require_once(__DIR__.'/pedido.php');
+require_once(__DIR__.'/tema.php');
+
 class Usuario{
 	protected $nome;
 	protected $nomeUsuario;
@@ -23,11 +26,35 @@ class Usuario{
 	
 	}
 
-	public function autoEditar(string $dado){
+	public function autoEditar(string $dado):bool{
+		
+	}
+
+	public function gerarProva(Pedido $pedido){
 		
 	}
 	
 	public function redefinirSenha(string $email){
+	
+	}
+
+	public function criarTema(string $nome, int $idQuestao):bool{
+		
+	}
+
+	public function removerTema(Tema $tema):bool{
+	
+	}
+
+	private function verificaEmail(string $dado):bool{
+		
+	}
+
+	private function fazPedido(){
+		
+	}
+
+	private function confirmaCodigo(string $codigo):bool{
 	
 	}
 }
