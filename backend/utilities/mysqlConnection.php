@@ -10,7 +10,7 @@ function mysqlConnection(string $database, string $user, string $passwd):mysqli{
 
 function mysqlQuery(mysqli $connection, string $query){
 	$request = $connection->query($query);
-	if(!$request)
+	if($request==false)
 		throw new Exception('Erro de comunicação');
 	return $request;
 }
