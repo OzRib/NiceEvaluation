@@ -30,8 +30,8 @@ try{
 
 	$resp['access'] = 'granted';
 }catch(Exception $e){
-	$resp['error'] = $e->getMessage();
 	$resp['access'] = 'denied';
+	$resp['error'] = $e->getMessage();
 }
 
 echo(json_encode($resp));
