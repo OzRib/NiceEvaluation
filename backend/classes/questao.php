@@ -30,7 +30,7 @@ class Questao{
 		$this->temas = $temas;
 	}
 
-	public function objetiva():bool{
+	public function isObjetiva():bool{
 		return $this->objetiva;		
 	}
 
