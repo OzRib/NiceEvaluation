@@ -8,7 +8,7 @@ export default class Login extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            nome: null,
+            id: null,
             senha: null
         }
     }
