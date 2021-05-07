@@ -21,7 +21,23 @@ class Usuario{
 	}
 
 	public static function login(string $senha, string $id){
-		
+		$id = filter_var($id, FILTER_SANITIZE_EMAIL);
+		if($id == false)
+			throw new Exception('Identificação inválida');
+
+		$typeData = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'nomeUsuario';
+
+		$connection = mysqlConnection('localhost', 'root', 'senha');
+		$result = mysqlQuery($connection, 'SELECT hashAndSalt, salt FROM Usuario WHERE '.$typeData.'="'.$id.'";');
+
+		$data = $result->fetch_assoc();
+		if($data == null)
+			throw new Exception('User doesn'."'".'t exist');
+		$passwdAndSalt = $senha.$data['salt'];
+		$hashAndSalt = genHash($passwdAndSalt);
+
+		if($hashAndSalt != $data['hashAndSalt'])
+			throw new Exception('Wrong password');
 	}
 
 	public function logout(){
