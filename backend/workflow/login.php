@@ -2,13 +2,13 @@
 require_once(__DIR__.'/../classes/usuarios.php');
 require_once(__DIR__.'/../utilities/mysqlConnection.php');
 
-session_start();
-$resp = [];
+$resp = ['access'=>'denied'];
 
 try{
 	if(empty($_POST['id']) || empty($_POST['senha']))
 		throw new Exception('bad request');
-	
+	session_start();
+		
 	$id = $_POST['id'];
 	$senha = $_POST['senha'];
 
