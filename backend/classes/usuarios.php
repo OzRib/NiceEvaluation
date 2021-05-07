@@ -13,7 +13,7 @@ class Usuario{
 	private $pedido;
 	private $codigoRedefinicao;
 
-	public function __construct(string $nome, string $nomeUsuario, string $email, string $senha){
+	public function __construct(string $nome, string $nomeUsuario, string $email, string $senha=''){
 		$this->nome = $nome;
 		$this->nomeUsuario = $nomeUsuario;
 		$this->email = $email;
