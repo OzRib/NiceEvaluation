@@ -13,13 +13,7 @@ async function lockOrientation(){
 async function tryLogin(login){
   const resp = await sendForm(network.url+'login.php', login)
   console.log(resp)
-  if(resp.access == 'granted'){
-    Alert.alert('Acesso liberado')
-    return true
-  }else{
-    Alert.alert('Acesso negado')
-    return false
-  }
+  return resp
 }
 
 //Page rendered in app
@@ -31,8 +25,16 @@ function Page({logged, submit}){
       <Login 
 	onSubmit={
 	  async data=>{
-	    const logged = await tryLogin(data)
-	    submit(logged)
+	    const resp = await tryLogin(data)
+	    submit(resp.access == 'granted')
+	    if(resp.error){
+	      return({
+		error: resp.error,
+		showError:true
+	      })
+	    }else{
+	      return null
+	    }
 	  }
 	}
       />
