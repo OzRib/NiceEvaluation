@@ -1,15 +1,16 @@
 //Imports and initiation variables 
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Input from '../components/input';
-import Button from '../components/button';
+import { Input, Button, AlertError } from '../components';
 
 export default class Login extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             id: null,
-            senha: null
+            senha: null,
+	    showError: false,
+	    error: null
         }
     }
 
@@ -23,7 +24,7 @@ export default class Login extends React.Component{
                     placeholder='Nome de usuário ou Email'
                     onChangeText={
                         value =>{
-                            this.setState({nome:value})
+                            this.setState({id:value})
                         }
                     }
                 >
@@ -47,13 +48,29 @@ export default class Login extends React.Component{
                     }}
                     textStyle={styles.text}
                     onPress={
-                        ()=>{
-                            this.props.onSubmit(this.state) || null
+                        async ()=>{
+			  if(this.props.onSubmit)
+                            this.setState(
+			      await this.props.onSubmit(this.state)
+			    )
+			  console.log(this.state)
                         }
                     }
                 >
                     Entrar
                 </Button>
+		<AlertError
+		  show={this.state.showError}
+		  onShow={
+		    ()=>{
+		      setTimeout(()=>{
+			this.setState({showError:false})
+			console.log(this.state)
+		      }, 2500)
+		    }  
+		  }
+		  error={this.state.error}
+		/>
             </View>
         )
     }
