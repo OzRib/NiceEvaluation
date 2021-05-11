@@ -13,8 +13,12 @@ export default class Login extends React.Component{
 	    error: null
         }
     }
-
+    async onRender(){
+      if(this.props.onRender)
+	this.setState(this.props.onRender(this.state))
+    }
     render(){
+	this.onRender()
         return(
             <View style={styles.container}>
                 <Text style={[styles.title, styles.header]}>NiceEvaluation</Text>
