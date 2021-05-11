@@ -41,7 +41,8 @@ class Usuario{
 	}
 
 	public function logout(){
-	
+		setCookie('logged');
+		unset($_SESSION['usuario']);
 	}
 
 	public function autoEditar(string $dado):bool{
