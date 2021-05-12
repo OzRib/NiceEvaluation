@@ -25,7 +25,7 @@ export default function App(){
   lockOrientation()
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login" mode="modal">
+      <Stack.Navigator initialRouteName="Login">
 	<Stack.Screen 
 	  name="Login"
 	  options={{
@@ -57,7 +57,20 @@ export default function App(){
 	    )
 	  }
 	</Stack.Screen>
-	<Stack.Screen name="Home" component={Home}/>
+	<Stack.Screen 
+	  name="Home" 
+	  component={Home}
+	  options={{
+	    headerShown: false
+	  }}
+	  listeners={(navigation)=>({
+	    beforeRemove: e =>{
+	      if(e.data.action.type != "GO_BACK")
+		return
+	      e.preventDefault()  
+	    }
+	  })}
+	/>
       </Stack.Navigator>
       <StatusBar barStyle="auto"/>
     </NavigationContainer>
