@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, HashRouter } from 'react-router-dom';
+import * as Pages from './pages';
 
 function App() {
+  let Routes = []
+  for(const x in Pages){
+    Routes.push(Pages[x])
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flexColumn">
+      <HashRouter>
+        {Routes.map((Obj, key)=>(
+          <Route key={key} exact path={
+            Obj.name === 'Login' ? '/': '/'+Obj.name
+          } component={Obj}/>
+        ))}
+      </HashRouter>
     </div>
   );
 }
