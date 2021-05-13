@@ -6,6 +6,21 @@ export default function Login(){
     const [show, setShow] = React.useState(false)
     const [error, setError] = React.useState(null)
 
+    async function checkLogged(){
+        const req = await fetch('/login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'id=null&senha=null'
+        })
+
+        const resp = await req.json()
+
+        if(resp.access === 'granted')
+            window.location.href = '/#/home'
+    }
+
     return(
         <div className="login flexColumn">
             <Form name="login" className="flexColumn">
