@@ -1,9 +1,9 @@
 import './login.css'
 import { Form, Button } from 'react-bootstrap';
 
-export default function Login(){
+export default function Login(){      
     return(
-        <div className="login centered">
+        <div className="login flexColumn">
             <Form name="login" className="flexColumn">
                 <Form.Label>
                     <h3 className="whiteText boldText">Nome de Usuário/Email</h3>
