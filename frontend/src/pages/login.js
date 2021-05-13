@@ -53,6 +53,7 @@ export default function Login(){
         }
     }
 
+    checkLogged()
     return(
         <div className="login flexColumn">
             <Form name="login" className="flexColumn" id="login" onSubmit={event => handleSubmit(event)}>
