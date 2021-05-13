@@ -2,7 +2,10 @@ import React from 'react';
 import './login.css';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-export default function Login(){      
+export default function Login(){
+    const [show, setShow] = React.useState(false)
+    const [error, setError] = React.useState(null)
+
     return(
         <div className="login flexColumn">
             <Form name="login" className="flexColumn">
@@ -19,6 +22,9 @@ export default function Login(){
                 </Button>
                 <a href="/#">Esqueci minha senha</a>
             </Form>
+            <Alert variant="danger" show={show}>
+                {error}
+            </Alert>
         </div>
     )
 }
