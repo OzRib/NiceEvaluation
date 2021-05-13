@@ -21,6 +21,17 @@ export default function Login(){
             window.location.href = '/#/home'
     }
 
+    async function tryLogin(login){
+        const req = await fetch('/login.php', {
+            method: 'POST',
+            body: new FormData(login)
+        })
+
+        const resp = await req.json()
+
+        return resp
+    }
+
     return(
         <div className="login flexColumn">
             <Form name="login" className="flexColumn">
