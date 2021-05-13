@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 export default function Login(){
     return(
         <div className="login centered">
-            <Form name="login" className="flex">
+            <Form name="login" className="flexColumn">
                 <Form.Label>
                     <h3 className="whiteText boldText">Nome de Usuário/Email</h3>
                 </Form.Label>
