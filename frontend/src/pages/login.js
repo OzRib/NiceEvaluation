@@ -32,6 +32,15 @@ export default function Login(){
         return resp
     }
 
+    function showError(){
+        const seconds3 = 3000
+
+        setShow(true)
+        setTimeout(()=>{
+            setShow(false)
+        }, seconds3)
+    }
+
     return(
         <div className="login flexColumn">
             <Form name="login" className="flexColumn">
