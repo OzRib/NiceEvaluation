@@ -3,17 +3,3 @@
     height: 100vh;
     width: 100vw;
 }
-
-.flex{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.whiteText{
-    color: white;
-}
-
-.boldText{
-    font-weight: bold;
-}
