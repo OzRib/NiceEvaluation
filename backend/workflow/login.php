@@ -15,11 +15,8 @@ try{
 	if(empty($_COOKIE['logged']) || empty($_SESSION['usuario'])){
 		Usuario::login($senha, $id);
 
-		$connection = mysqlConnection('localhost', 'root', 'senha');
-		$typeData = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'nomeUsuario';
-		$request = mysqlQuery($connection, 'SELECT nome, nomeUsuario, email FROM Usuario where '.$typeData.'="'.$id.'";');
+		$userData = getUserData($id);
 
-		$userData = $request->fetch_assoc();
 		$user = new Usuario($userData['nome'], $userData['nomeUsuario'], $userData['email']);
 	
 		$_SESSION['usuario'] = $user;
