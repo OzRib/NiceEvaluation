@@ -1,35 +1,15 @@
 import React from 'react';
 import './login.css';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { tryLogin, checkLogged } from '../communication';
 
 export default function Login(){
     const [show, setShow] = React.useState(false)
     const [error, setError] = React.useState(null)
 
-    async function checkLogged(){
-        const req = await fetch('/login.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: 'id=null&senha=null'
-        })
-
-        const resp = await req.json()
-
-        if(resp.access === 'granted')
+    async function onLoad(){
+        if(await checkLogged())
             window.location.href = '/#/home'
-    }
-
-    async function tryLogin(login){
-        const req = await fetch('/login.php', {
-            method: 'POST',
-            body: new FormData(login)
-        })
-
-        const resp = await req.json()
-
-        return resp
     }
 
     function showError(){
@@ -53,7 +33,7 @@ export default function Login(){
         }
     }
 
-    checkLogged()
+    onLoad()
     return(
         <div className="login flexColumn">
             <Form name="login" className="flexColumn" id="login" onSubmit={event => handleSubmit(event)}>
