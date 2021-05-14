@@ -14,4 +14,14 @@ function mysqlQuery(mysqli $connection, string $query){
 		throw new Exception('Erro de comunicação');
 	return $request;
 }
+
+function getUserData($id): array{
+	$connection = mysqlConnection('localhost', 'root', 'senha');
+	$typeData = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'nomeUsuario';
+	$request = mysqlQuery($connection, 'SELECT nome, nomeUsuario, email FROM Usuario WHERE '.$typeData.'="'.$id.'";');
+
+	$userData = $request->fetch_assoc();
+
+	return $userData;
+}
 ?>
