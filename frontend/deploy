@@ -1,0 +1,10 @@
+#!/bin/bash
+
+npm run build
+
+echo "Sending archives to /srv/http..."
+for file in build/*
+do
+	sudo cp -rf $file /srv/http
+done
+echo "Sended"
