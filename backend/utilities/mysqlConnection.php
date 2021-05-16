@@ -27,4 +27,17 @@ function getUserData($id): array|null{
 
 	return $userData;
 }
+
+function getAdminData($id): array|null{
+	$connection = mysqlConnection('localhost', 'root', 'senha');
+	$typeData = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'Usuario_email' : 'Usuario_nomeUsuario';
+	$request = mysqlQuery(
+		$connection, 
+		'SELECT Usuario_nomeUsuario, Usuario_email FROM Administrador WHERE '.$typeData.'="'.$id.'";'
+	);
+	
+	$adminData = $request->fetch_assoc();
+
+	return $adminData;
+}
 ?>
