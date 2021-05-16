@@ -43,6 +43,10 @@
   font-weight: bold;
 }
 
+.italicText{
+  font-style: italic;
+}
+
 .fullscreen{
   min-height: 100vh;
   min-width: 100vw;
