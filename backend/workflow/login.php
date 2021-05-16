@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__.'/../classes/usuarios.php');
 require_once(__DIR__.'/../utilities/mysqlConnection.php');
+require_once(__DIR__.'/../utilities/confirmations.php');;
 
 $resp = ['access'=>'denied'];
 
@@ -17,9 +18,17 @@ try{
 
 		$userData = getUserData($id);
 
-		$user = new Usuario($userData['nome'], $userData['nomeUsuario'], $userData['email']);
+		$isUserAdmin = isUserAdmin($userData);
+
+		if($isUserAdmin)
+			$user = new Administrador($userData['nome'], $userData['nomeUsuario'], $userData['email']);
+		else
+			$user = new Professor($userData['nome'], $userData['nomeUsuario'], $userData['email']);
 	
 		$_SESSION['usuario'] = $user;
+
+		$_SESSION['admin'] = $isUserAdmin;
+		$resp['admin'] = $isUserAdmin;
 
 		//The cookie expires in 1.5 hour
 		setCookie('logged', true, time()+5400);
