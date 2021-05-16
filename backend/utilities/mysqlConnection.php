@@ -15,7 +15,7 @@ function mysqlQuery(mysqli $connection, string $query){
 	return $request;
 }
 
-function getUserData($id): array{
+function getUserData($id): array|null{
 	$connection = mysqlConnection('localhost', 'root', 'senha');
 	$typeData = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'nomeUsuario';
 	$request = mysqlQuery($connection, 'SELECT nome, nomeUsuario, email FROM Usuario WHERE '.$typeData.'="'.$id.'";');
