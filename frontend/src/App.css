@@ -11,6 +11,18 @@
   align-items: center;
 }
 
+.JCFlexEnd{
+  justify-content: flex-end;
+}
+
+.JCFlexStart{
+  justify-content: flex-start;
+}
+
+.JCCenter{
+  justify-content: center;
+}
+
 .whiteText{
   color:white;
 }
