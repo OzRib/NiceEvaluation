@@ -1,3 +1,5 @@
-import Login from './login';
+import Login from './login/login';
+import AdminChoice from './admin-choice/admin-choice';
+import ManageUsers from './manage-users/manage-users';
 
-export { Login }
+export { Login, AdminChoice, ManageUsers }
