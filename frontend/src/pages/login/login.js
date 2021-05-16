@@ -47,7 +47,7 @@ export default function Login(){
                     <div className="whiteText boldText f1o5">Senha</div>
                 </Form.Label>
                 <Form.Control type="password" name="senha" id="senha" placeholder="Insira sua senha"/>
-                <Button variant="primary" type="submit" id="submit">
+                <Button variant="success" type="submit" id="submit">
                     Entrar
                 </Button>
                 <a href="/#" class="newLink boldText">Esqueci minha senha</a>
