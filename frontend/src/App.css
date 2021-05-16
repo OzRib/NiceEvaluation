@@ -59,3 +59,11 @@
 .fullHeight{
   min-height: 100vh;
 }
+
+.newLink{
+  text-decoration: none;
+}
+
+.newLink:hover{
+  text-decoration: underline;
+}
