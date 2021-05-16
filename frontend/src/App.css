@@ -42,3 +42,16 @@
 .boldText{
   font-weight: bold;
 }
+
+.fullscreen{
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.fullWidth{
+  min-width: 100vw;
+}
+
+.fullHeight{
+  min-height: 100vh;
+}
