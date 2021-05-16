@@ -72,6 +72,10 @@
   font-size: 1.5rem;
 }
 
+.w100p{
+  width: 100%;
+}
+
 .mh2p{
   margin-left: 2%;
   margin-right: 2%;
