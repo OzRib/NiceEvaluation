@@ -23,6 +23,18 @@
   justify-content: center;
 }
 
+.AIFlexEnd{
+  align-items: flex-end;
+}
+
+.AIFlexStart{
+  align-items: flex-start;
+}
+
+.AICenter{
+  align-items: center;
+}
+
 .whiteText{
   color:white;
 }
