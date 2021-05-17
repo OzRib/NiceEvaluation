@@ -104,16 +104,7 @@ class Administrador extends Usuario{
 			if($adm){
 				insertUserAdmin($dados->nomeUsuario, $dados->email);
 			}else{
-				mysqlQuery($connection, 'INSERT Professor(
-					Usuario_nomeUsuario,
-					Usuario_email
-					Administrador_Usuario_nomeUsuario,
-					Administrador_Usuario_email)
-					VALUES(
-					"'.$dados->nomeUsuario.'",
-					"'.$dados->email.'",
-					"'.$this->nomeUsuario.'",
-					"'.$this->email.'");');
+				insertUserProfessor($dados->nomeUsuario,$dados->email, $this->nomeUsuario, $this->email);
 			}
 		}catch(Exception $e){
 			mysqlQuery($connection, 'DELETE FROM Usuario WHERE email="'.$dados->email.'";');
