@@ -107,7 +107,7 @@ class Administrador extends Usuario{
 				insertUserProfessor($dados->nomeUsuario,$dados->email, $this->nomeUsuario, $this->email);
 			}
 		}catch(Exception $e){
-			mysqlQuery($connection, 'DELETE FROM Usuario WHERE email="'.$dados->email.'";');
+			deleteUser($dados->email);
 			return false;
 		}
 		return true;
