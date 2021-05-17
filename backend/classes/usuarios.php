@@ -102,8 +102,7 @@ class Administrador extends Usuario{
 
 		try{
 			if($adm){
-				mysqlQuery($connection, 'INSERT Administrador(Usuario_nomeUsuario, Usuario_email)
-					VALUES("'.$dados->nomeUsuario.'", "'.$dados->email.'");');
+				insertUserAdmin($dados->nomeUsuario, $dados->email);
 			}else{
 				mysqlQuery($connection, 'INSERT Professor(
 					Usuario_nomeUsuario,
