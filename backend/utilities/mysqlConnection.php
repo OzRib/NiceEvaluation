@@ -97,4 +97,11 @@ function insertUserProfessor(string $nomeUsuario, string $email, string $adminNo
 			"'.$adminEmail.'"	
 		);');
 }
+
+function deleteUser(string $email){
+	$connection = mysqlConnection('localhost', 'root', 'senha');
+	mysqlQuery($connection, 'DELETE FROM Usuario WHERE email="'.$email.'";');
+	if($connection->affected_rows == 0)
+		throw new Exception('User doesn'."'".'t exist');	
+}
 ?>
