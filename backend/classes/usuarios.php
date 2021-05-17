@@ -125,7 +125,20 @@ class Administrador extends Usuario{
 	}
 
 	public function editarUsuario(Usuario $usuario, string $dado):bool{
+		$isReferenceEmail = isUser($usuario->email); 
+		$isUser = $isReferenceEmail || isUser($usuario->nomeUsuario);
 
+		if(!$isUser)
+			throw new Exception('Variable usuario is'."'".'nt listed in database');
+		if(!isset($usuario->$dado) || $dado === 'senha')
+			throw new Exception('Invalid data to edit');
+		try{
+			$id = $isReferenceEmail ? $usuario->email : $usuario->nomeUsuario;
+			editUserData($id, $dado, $usuario->$dado);
+			return true;
+		}catch(Exception $e){
+			return false;
+		}
 	}
 
 	public function removerUsuario(string $email):bool{
