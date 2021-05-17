@@ -18,7 +18,7 @@ try{
 
 		$userData = getUserData($id);
 
-		$isUserAdmin = isUserAdmin($userData);
+		$isUserAdmin = isUserAdmin($userData['email']);
 
 		if($isUserAdmin)
 			$user = new Administrador($userData['nome'], $userData['nomeUsuario'], $userData['email']);
