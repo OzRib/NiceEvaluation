@@ -9,6 +9,8 @@ Env::load(__DIR__.'/..');
 $env = getenv();
 
 function mysqlConnection(string $database, string $user, string $passwd):mysqli{
+	GLOBAL $env;
+
 	$connection = new mysqli($database, $user, $passwd, $env['DB_NAME']);
 	if($connection->connect_error)
 		throw new Exception('Conexão recusada');
@@ -23,6 +25,8 @@ function mysqlQuery(mysqli $connection, string $query){
 }
 
 function getUserData($id): array|null{
+	GLOBAL $env;
+
 	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	$typeData = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'nomeUsuario';
 	$request = mysqlQuery(
@@ -36,6 +40,8 @@ function getUserData($id): array|null{
 }
 
 function getAdminData($id): array|null{
+	GLOBAL $env;
+
 	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	$typeData = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'Usuario_email' : 'Usuario_nomeUsuario';
 	$request = mysqlQuery(
@@ -49,6 +55,8 @@ function getAdminData($id): array|null{
 }
 
 function editUserData(string $id, string $dataType, string $data):void{
+	GLOBAL $env;
+
 	$validValues = ['nome', 'nomeUsuario', 'email'];
 	$validValue = false;
 	foreach($validValues as $value){
@@ -73,6 +81,8 @@ function insertUser(
 		string $hashAndSalt,
 		string $salt
 	){
+		GLOBAL $env;
+
 		$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 		mysqlQuery($connection, 'INSERT Usuario(nome, nomeUsuario, email, hashAndSalt, salt)
 			VALUES(
@@ -85,12 +95,16 @@ function insertUser(
 }
 
 function insertUserAdmin(string $nomeUsuario, string $email){
+	GLOBAL $env;
+
 	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	mysqlQuery($connection, 'INSERT Administrador(Usuario_nomeUsuario, Usuario_email)
 		VALUES("'.$nomeUsuario.'", "'.$email.'");');
 }
 
 function insertUserProfessor(string $nomeUsuario, string $email, string $adminNomeUsuario, string $adminEmail){
+	GLOBAL $env;
+
 	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	mysqlQuery($connection, 'INSERT Professor(
 			Usuario_nomeUsuario,
@@ -106,6 +120,8 @@ function insertUserProfessor(string $nomeUsuario, string $email, string $adminNo
 }
 
 function deleteUser(string $email){
+	GLOBAL $env;
+
 	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	mysqlQuery($connection, 'DELETE FROM Usuario WHERE email="'.$email.'";');
 	if($connection->affected_rows == 0)
