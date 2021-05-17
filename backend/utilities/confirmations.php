@@ -8,4 +8,10 @@ function isUserAdmin(string $id):bool{
     $isAdmin = $userData ? true : false;
     return $isAdmin;
 }
+
+function isUser(string $id){
+    $userData = getUserData($id);
+    $isUser = $userData ? true : false;
+    return $isUser;
+}
 ?>
