@@ -58,4 +58,22 @@ function editUserData(string $id, string $dataType, string $data):void{
 		SET '.$dataType.'="'.$data.'"
 		WHERE '.$reference.'="'.$id.'";');
 }
+
+function insertUser(
+		string $nome, 
+		string $nomeUsuario, 
+		string $email, 
+		string $hashAndSalt,
+		string $salt
+	){
+		$connection = mysqlConnection('localhost', 'root', 'senha');
+		mysqlQuery($connection, 'INSERT Usuario(nome, nomeUsuario, email, hashAndSalt, salt)
+			VALUES(
+				"'.$nome.'",
+				"'.$nomeUsuario.'",
+					"'.$email.'",
+				"'.$hashAndSalt.'",
+				"'.$salt.'"
+			);');
+}
 ?>
