@@ -9,7 +9,7 @@ Env::load(__DIR__.'/..');
 $env = getenv();
 
 function mysqlConnection(string $database, string $user, string $passwd):mysqli{
-	$connection = new mysqli($database, $user, $passwd, 'NiceEvaluation');
+	$connection = new mysqli($database, $user, $passwd, $env['DB_NAME']);
 	if($connection->connect_error)
 		throw new Exception('Conexão recusada');
 	return $connection;
@@ -23,7 +23,7 @@ function mysqlQuery(mysqli $connection, string $query){
 }
 
 function getUserData($id): array|null{
-	$connection = mysqlConnection('localhost', 'root', 'senha');
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	$typeData = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'nomeUsuario';
 	$request = mysqlQuery(
 		$connection, 
@@ -36,7 +36,7 @@ function getUserData($id): array|null{
 }
 
 function getAdminData($id): array|null{
-	$connection = mysqlConnection('localhost', 'root', 'senha');
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	$typeData = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'Usuario_email' : 'Usuario_nomeUsuario';
 	$request = mysqlQuery(
 		$connection, 
@@ -60,7 +60,7 @@ function editUserData(string $id, string $dataType, string $data):void{
 
 	$reference = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'nomeUsuario';
 
-	$connection = mysqlConnection('localhost', 'root', 'senha');
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	mysqlQuery($connection, 'UPDATE Usuario 
 		SET '.$dataType.'="'.$data.'"
 		WHERE '.$reference.'="'.$id.'";');
@@ -73,7 +73,7 @@ function insertUser(
 		string $hashAndSalt,
 		string $salt
 	){
-		$connection = mysqlConnection('localhost', 'root', 'senha');
+		$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 		mysqlQuery($connection, 'INSERT Usuario(nome, nomeUsuario, email, hashAndSalt, salt)
 			VALUES(
 				"'.$nome.'",
@@ -85,13 +85,13 @@ function insertUser(
 }
 
 function insertUserAdmin(string $nomeUsuario, string $email){
-	$connection = mysqlConnection('localhost', 'root', 'senha');
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	mysqlQuery($connection, 'INSERT Administrador(Usuario_nomeUsuario, Usuario_email)
 		VALUES("'.$nomeUsuario.'", "'.$email.'");');
 }
 
 function insertUserProfessor(string $nomeUsuario, string $email, string $adminNomeUsuario, string $adminEmail){
-	$connection = mysqlConnection('localhost', 'root', 'senha');
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	mysqlQuery($connection, 'INSERT Professor(
 			Usuario_nomeUsuario,
 			Usuario_email,
@@ -106,7 +106,7 @@ function insertUserProfessor(string $nomeUsuario, string $email, string $adminNo
 }
 
 function deleteUser(string $email){
-	$connection = mysqlConnection('localhost', 'root', 'senha');
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	mysqlQuery($connection, 'DELETE FROM Usuario WHERE email="'.$email.'";');
 	if($connection->affected_rows == 0)
 		throw new Exception('User doesn'."'".'t exist');	
