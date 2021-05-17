@@ -76,4 +76,10 @@ function insertUser(
 				"'.$salt.'"
 			);');
 }
+
+function insertUserAdmin(string $nomeUsuario, string $email){
+	$connection = mysqlConnection('localhost', 'root', 'senha');
+	mysqlQuery($connection, 'INSERT Administrador(Usuario_nomeUsuario, Usuario_email)
+		VALUES("'.$nomeUsuario.'", "'.$email.'");');
+}
 ?>
