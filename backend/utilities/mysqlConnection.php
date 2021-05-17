@@ -82,4 +82,19 @@ function insertUserAdmin(string $nomeUsuario, string $email){
 	mysqlQuery($connection, 'INSERT Administrador(Usuario_nomeUsuario, Usuario_email)
 		VALUES("'.$nomeUsuario.'", "'.$email.'");');
 }
+
+function insertUserProfessor(string $nomeUsuario, string $email, string $adminNomeUsuario, string $adminEmail){
+	$connection = mysqlConnection('localhost', 'root', 'senha');
+	mysqlQuery($connection, 'INSERT Professor(
+			Usuario_nomeUsuario,
+			Usuario_email,
+			Administrador_Usuario_nomeUsuario,
+			Administrador_Usuario_email
+		)VALUES(
+			"'.$nomeUsuario.'",
+			"'.$email.'",
+			"'.$adminNomeUsuario.'",
+			"'.$adminEmail.'"	
+		);');
+}
 ?>
