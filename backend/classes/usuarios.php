@@ -15,7 +15,7 @@ class Usuario{
 	private $pedido;
 	private $codigoRedefinicao;
 
-	public function __construct(string $nome, string $nomeUsuario, string $email, string $senha=''){
+	public function __construct(string $nome, string $nomeUsuario, string $email, string|null $senha=null){
 		$this->nome = $nome;
 		$this->nomeUsuario = $nomeUsuario;
 		$this->email = $email;
@@ -84,11 +84,12 @@ class Professor extends Usuario{}
 
 class Administrador extends Usuario{
 	public function criarUsuario(Usuario $dados, bool $adm=false):bool{
-		$salt = genSalt();
-		$passwdAndSalt = $dados->senha.$salt;
-		$hashAndSalt = genHash($passwdAndSalt);
-
 		try{
+			if($dados->senha === null)
+				throw new Exception('User without password');
+			$salt = genSalt();
+			$passwdAndSalt = $dados->senha.$salt;
+			$hashAndSalt = genHash($passwdAndSalt);
 			insertUser(
 				$dados->nome, 
 				$dados->nomeUsuario, 
