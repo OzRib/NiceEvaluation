@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
+
 require_once(__DIR__.'/pedido.php');
 require_once(__DIR__.'/tema.php');
 require_once(__DIR__.'/../utilities/hashAndSalt.php');
 require_once(__DIR__.'/../utilities/mysqlConnection.php');
+require_once(__DIR__.'/../utilities/confirmations.php');
 
 class Usuario{
 	protected $nome;
