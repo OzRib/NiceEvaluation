@@ -1,6 +1,13 @@
 <?php
 declare(strict_types=1);
 
+require_once(__DIR__.'/../vendor/autoload.php');
+
+use \Env\Load\env;
+
+Env::load(__DIR__.'/..');
+$env = getenv();
+
 function mysqlConnection(string $database, string $user, string $passwd):mysqli{
 	$connection = new mysqli($database, $user, $passwd, 'NiceEvaluation');
 	if($connection->connect_error)
