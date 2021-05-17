@@ -89,14 +89,13 @@ class Administrador extends Usuario{
 		$hashAndSalt = genHash($passwdAndSalt);
 
 		try{
-			$connection = mysqlConnection('localhost', 'root', 'senha');
-			mysqlQuery($connection, 'INSERT Usuario(nome, nomeUsuario, email, hashAndSalt, salt)
-				VALUES(
-				"'.$dados->nome.'",
-				"'.$dados->nomeUsuario.'",
-				"'.$dados->email.'",
-				"'.$hashAndSalt.'",
-				"'.$salt.'");');
+			insertUser(
+				$dados->nome, 
+				$dados->nomeUsuario, 
+				$dados->email,
+				$hashAndSalt,
+				$salt
+			);
 		}catch(Exception $e){
 			return false;
 		}
