@@ -47,8 +47,13 @@ class Usuario{
 		unset($_SESSION['usuario']);
 	}
 
-	public function autoEditar(string $dado):bool{
-		
+	public function autoEditar(string $tipoDado, string $dado):bool{
+		try{
+			editUserData($this->email, $tipoDado, $dado);
+			return true;
+		}catch(Exception $e){
+			return false;
+		}
 	}
 
 	public function gerarProva(Pedido $pedido){
