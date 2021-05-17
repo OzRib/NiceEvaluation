@@ -131,11 +131,16 @@ class Administrador extends Usuario{
 	}
 
 	public function removerUsuario(string $email):bool{
-		
+		try{
+			deleteUser($email);
+			return true;
+		}catch(Exception $e){
+			return false;
+		}
 	}
 
 	public function listarUsuarios():array{
-	
+		
 	}
 
 	public function criarQuestao(string $corpo, string $resposta, bool $objetiva, array|null $itens=null):bool{
