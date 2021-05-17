@@ -1,0 +1,8 @@
+{
+	"name": "ozeias/env",
+	"autoload":{
+		"psr-4":{
+			"Env\\": "env/"
+		}
+	}
+}
