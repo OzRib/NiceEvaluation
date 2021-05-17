@@ -40,4 +40,22 @@ function getAdminData($id): array|null{
 
 	return $adminData;
 }
+
+function editUserData(string $id, string $dataType, string $data):void{
+	$validValues = ['nome', 'nomeUsuario', 'email'];
+	$validValue = false;
+	foreach($validValues as $value){
+		if($dataType === $value)
+			$validValue = true;
+	}
+	if(!$validValue)
+		throw new Exception('Expected nome or nomeUsuario or email in editUserData');
+
+	$reference = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'nomeUsuario';
+
+	$connection = mysqlConnection('localhost', 'root', 'senha');
+	mysqlQuery($connection, 'UPDATE Usuario 
+		SET '.$dataType.'="'.$data.'"
+		WHERE '.$reference.'="'.$id.'";');
+}
 ?>
