@@ -26,15 +26,14 @@ try{
 			$user = new Professor($userData['nome'], $userData['nomeUsuario'], $userData['email']);
 	
 		$_SESSION['usuario'] = $user;
-
 		$_SESSION['admin'] = $isUserAdmin;
-		$resp['admin'] = $isUserAdmin;
 
 		//The cookie expires in 1.5 hour
 		setCookie('logged', true, time()+5400);
 	}
 
 	$resp['access'] = 'granted';
+	$resp['admin'] = $_SESSION['admin'];
 }catch(Exception $e){
 	$resp['access'] = 'denied';
 	$resp['error'] = $e->getMessage();
