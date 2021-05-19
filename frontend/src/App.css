@@ -106,3 +106,7 @@
 .mt1p{
   margin-top: 1%;
 }
+
+.shadow{
+  box-shadow: 1px;
+}
