@@ -2,15 +2,26 @@ import React from 'react';
 import './login.css';
 import logo from '../../logo.png';
 import { Form, Button, Alert, Image } from 'react-bootstrap';
-import { tryLogin, checkLogged } from '../../communication';
+import { tryLogin, checkLogin, userControl } from '../../communication';
 
 export default function Login(){
     const [show, setShow] = React.useState(false)
     const [error, setError] = React.useState(null)
 
     async function onLoad(){
-        if(await checkLogged())
-            window.location.href = '/#/admin-choice'
+        const actions = {
+            'admin': function(){
+                window.location.href = '/#/admin-choice'
+            },
+            'user': function(){
+                window.location.href = '/#/teacher-page'
+            }
+        }
+
+        const resp = await checkLogin()
+        const action = userControl(resp)
+        if(actions[action.action] !== undefined)
+            actions[action.action]()
     }
 
     function showError(){
@@ -24,14 +35,25 @@ export default function Login(){
 
     async function handleSubmit(event){
         event.preventDefault()
+        const actions = {
+            'admin' : function(){
+                window.location.href = '/#/admin-choice'
+            },
+            'user': function(){
+                window.location.href = '/#/teacher-page'
+            },
+            'error': function(error){
+                setError(error)
+                showError()
+            }
+        }
+
         const login = document.forms.login
         const resp = await tryLogin(login)
-        if(resp.access === 'granted')
-            window.location.href = '/#/admin-choice'
-        else{
-            setError(resp.error)
-            showError()
-        }
+
+        const action = userControl(resp)
+        if(action.action !== undefined)
+            actions[action.action](action.error)
     }
 
     onLoad()
