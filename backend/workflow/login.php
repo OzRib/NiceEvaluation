@@ -7,7 +7,7 @@ $resp = ['access'=>'denied'];
 
 try{
 	if(empty($_POST['id']) || empty($_POST['senha']))
-		throw new Exception('bad request');
+		throw new Exception('Um dos campos está vazio');
 	session_start();
 		
 	$id = $_POST['id'];

@@ -64,7 +64,7 @@ function editUserData(string $id, string $dataType, string $data):void{
 			$validValue = true;
 	}
 	if(!$validValue)
-		throw new Exception('Expected nome or nomeUsuario or email in editUserData');
+		throw new Exception('Esperado nome ou nomeUsuario ou email ao editar um usuário');
 
 	$reference = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'nomeUsuario';
 
@@ -125,7 +125,7 @@ function deleteUser(string $email){
 	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
 	mysqlQuery($connection, 'DELETE FROM Usuario WHERE email="'.$email.'";');
 	if($connection->affected_rows == 0)
-		throw new Exception('User doesn'."'".'t exist');	
+		throw new Exception('Usuário não existe');	
 }
 
 function listUsers():array{

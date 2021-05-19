@@ -34,12 +34,12 @@ class Usuario{
 
 		$data = $result->fetch_assoc();
 		if($data == null)
-			throw new Exception('User doesn'."'".'t exist');
+			throw new Exception('Usuário não existe');
 		$passwdAndSalt = $senha.$data['salt'];
 		$hashAndSalt = genHash($passwdAndSalt);
 
 		if($hashAndSalt != $data['hashAndSalt'])
-			throw new Exception('Wrong password');
+			throw new Exception('Senha incorreta');
 	}
 
 	public function logout(){
@@ -91,7 +91,7 @@ class Administrador extends Usuario{
 	public function criarUsuario(Usuario $dados, bool $adm=false):bool{
 		try{
 			if($dados->senha === null)
-				throw new Exception('User without password');
+				throw new Exception('Usuário sem senha');
 			$salt = genSalt();
 			$passwdAndSalt = $dados->senha.$salt;
 			$hashAndSalt = genHash($passwdAndSalt);
@@ -124,9 +124,9 @@ class Administrador extends Usuario{
 		$isUser = $isReferenceEmail || isUser($usuario->nomeUsuario);
 
 		if(!$isUser)
-			throw new Exception('Variable usuario is'."'".'nt listed in database');
+			throw new Exception('Usuário não está listado no Banco de Dados');
 		if(!isset($usuario->$dado) || $dado === 'senha')
-			throw new Exception('Invalid data to edit');
+			throw new Exception('Dado inválido para a edição');
 		try{
 			$id = $isReferenceEmail ? $usuario->email : $usuario->nomeUsuario;
 			editUserData($id, $dado, $usuario->$dado);
