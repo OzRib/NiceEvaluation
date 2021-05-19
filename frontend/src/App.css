@@ -110,3 +110,7 @@
 .shadow{
   box-shadow: 1px;
 }
+
+.bgcWhite{
+  background-color: white;
+}
