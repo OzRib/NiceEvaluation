@@ -146,7 +146,28 @@ class Administrador extends Usuario{
 	}
 
 	public function listarUsuarios():array{
-		
+		try{
+			$configs = [
+				0=>'nome',
+				1=>'nomeUsuario',
+				2=>'email',
+				3=>'tipoUsuario'
+			];
+			
+			$users = listUsers();
+
+			foreach($users as $position=>$user){
+				foreach($user as $key=>$attr){
+					$tempUser[$configs[$key]] = $attr;
+				}
+				$finalUsers[$position] = $tempUser;
+			}
+
+			return $finalUsers;
+		}catch(Exception $e){
+			throw new Exception('Erro ao listar usuários');
+		}
+
 	}
 
 	public function criarQuestao(string $corpo, string $resposta, bool $objetiva, array|null $itens=null):bool{
