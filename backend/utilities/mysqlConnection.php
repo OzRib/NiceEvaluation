@@ -127,4 +127,19 @@ function deleteUser(string $email){
 	if($connection->affected_rows == 0)
 		throw new Exception('User doesn'."'".'t exist');	
 }
+
+function listUsers():array{
+	GLOBAL $env;
+
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
+	$req = mysqlQuery($connection, 'SELECT 
+		nome, 
+		nomeUsuario, 
+		email, 
+		IF(Usuario.nomeUsuario=Administrador.Usuario_nomeUsuario, "Administrador", "Professor") AS tipoUsuario
+		FROM Usuario JOIN Administrador;');
+	$result = $req->fetch_all();
+	
+	return $result;
+}
 ?>
