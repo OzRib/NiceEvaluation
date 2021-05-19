@@ -6,8 +6,8 @@ export default function AdminChoice(){
     return(
         <div className="admin-choice flexColumn AICenter fullscreen">
             <Image className="mediumLogo" src={logo}></Image>
-            <Button variant="success" className="choice" href="/#/user-manage">Gerenciamento de Usuários</Button>
-            <Button variant="success" className="choice">Página dos Profesores</Button>
+            <Button variant="success" className="choice" href="/#/manage-users">Gerenciamento de Usuários</Button>
+            <Button variant="success" className="choice" href="/#/teacher-page">Página dos Profesores</Button>
         </div>
     )
 }
