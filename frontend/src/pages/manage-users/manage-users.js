@@ -1,10 +1,7 @@
 import React from 'react';
 import './manage-users.css';
-import { Image, DropdownButton, Dropdown, Button, Spinner } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { checkLogin, userControl } from '../../communication';
-import { IconLogo, ContentBox, ListUsers, AdminHeader, AddUser } from '../../components';
+import { ContentBox, ListUsers, AdminHeader, AddUser } from '../../components';
 import { LoadingPage } from '../';
 
 export default function ManageUsers(){
@@ -24,17 +21,6 @@ export default function ManageUsers(){
         if(actions[action.action] !== undefined)
             actions[action.action]()
 	setLoaded(true)
-    }
-
-    async function logout(){
-        const req = await fetch('/logout.php')
-
-        const resp = await req.json()
-
-        if(resp.logged === false)
-            window.location.href = '/#/'
-        else
-            console.log(resp.error)
     }
 
     React.useEffect(async ()=>{
