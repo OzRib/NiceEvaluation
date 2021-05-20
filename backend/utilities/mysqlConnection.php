@@ -137,7 +137,7 @@ function listUsers():array{
 		nomeUsuario, 
 		email, 
 		IF(Usuario.nomeUsuario=Administrador.Usuario_nomeUsuario, "Administrador", "Professor") AS tipoUsuario
-		FROM Usuario JOIN Administrador;');
+		FROM Usuario LEFT JOIN Administrador ON nomeUsuario=Usuario_nomeUsuario;');
 	$result = $req->fetch_all();
 	
 	return $result;
