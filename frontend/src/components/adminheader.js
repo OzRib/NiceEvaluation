@@ -3,6 +3,11 @@ import IconLogo from './iconlogo';
 import { logout } from '../communication';
 
 export default function AdminHeader(){
+    async function handleClick(){
+	const resp = await logout()
+	if(resp.logged === false)
+	    window.location.href = '/#/'
+    }
     return(
         <div id="header" className="fullWidth flexRow AICenter shadow">
             <IconLogo/>
@@ -16,7 +21,7 @@ export default function AdminHeader(){
                         className="mh2p"
                         menuAlign="right"
                     >
-                        <Dropdown.Item onClick={logout}>
+                        <Dropdown.Item onClick={()=>{handleClick()}}>
                             Sair
                         </Dropdown.Item>
                     </DropdownButton>
