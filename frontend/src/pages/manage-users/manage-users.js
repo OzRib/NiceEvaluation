@@ -7,7 +7,7 @@ import { checkLogin, userControl } from '../../communication';
 import { IconLogo, ContentBox } from '../../components';
 
 export default function ManageUsers(){
-    const [infos, setInfos] = React.useState(<Spinner animation="border" variant="danger"/>)  
+    const [loaded, setLoaded] = React.useState(false)
     async function onLoad(){
         const actions = {
             'user': function(){
@@ -22,6 +22,7 @@ export default function ManageUsers(){
         const action = userControl(resp)
         if(actions[action.action] !== undefined)
             actions[action.action]()
+	setLoaded(true)
     }
 
     async function logout(){
@@ -35,7 +36,10 @@ export default function ManageUsers(){
             console.log(resp.error)
     }
 
-    onLoad()
+    React.useEffect(async ()=>{
+	await onLoad()
+    }, [])
+    
     return(
         <div id="manage-users" className="flexColumn fullscreen">
             <div id="header" className="fullWidth flexRow AICenter shadow">
