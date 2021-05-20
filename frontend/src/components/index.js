@@ -1,4 +1,8 @@
 import ContentBox from './contentbox';
 import IconLogo from './iconlogo';
+import AddUser from './adduser';
+import AdminHeader from './adminheader';
+import ListUsers from './listusers.js';
+import User from './user';
 
-export { IconLogo, ContentBox }
+export { IconLogo, ContentBox, AddUser, AdminHeader, ListUsers, User }
