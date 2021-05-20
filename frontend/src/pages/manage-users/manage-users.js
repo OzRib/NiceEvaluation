@@ -4,7 +4,8 @@ import { Image, DropdownButton, Dropdown, Button, Spinner } from 'react-bootstra
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { checkLogin, userControl } from '../../communication';
-import { IconLogo, ContentBox } from '../../components';
+import { IconLogo, ContentBox, ListUsers, AdminHeader, AddUser } from '../../components';
+import { LoadingPage } from '../';
 
 export default function ManageUsers(){
     const [loaded, setLoaded] = React.useState(false)
@@ -42,41 +43,18 @@ export default function ManageUsers(){
     
     return(
         <div id="manage-users" className="flexColumn fullscreen">
-            <div id="header" className="fullWidth flexRow AICenter shadow">
-                <IconLogo/>
-                <div 
-                    className="perfil flexRow w100p JCFlexEnd"
-                >
-                    <div className="flexRow mh2p">
-                        <DropdownButton 
-                            variant="success" 
-                            title="Minha Conta" 
-                            className="mh2p"
-                            menuAlign="right"
-                        >
-                            <Dropdown.Item onClick={logout}>
-                                Sair
-                            </Dropdown.Item>
-                        </DropdownButton>
-                        <Image 
-                            src="https://lh3.google.com/u/0/ogw/ADGmqu-29XApp4ZRMCdtbI14go0QlAt40j9XeCue7tyy=s32-c-mo" 
-                            height="40rem" 
-                            width="40rem"
-                            roundedCircle
-                            className="mh2p"
-                        />
-                    </div>
-                </div>
-            </div>
-            <ContentBox className="flexColumn">
-                <Button variant="outline-success w100p" className="w100p">
-                    <FontAwesomeIcon icon={faPlus}/>{'  '}
-                    Adicionar Usuário
-                </Button>            
-            </ContentBox>
-            <ContentBox className="flexColumn AICenter">
-                {infos}
-            </ContentBox>            
+	    {!loaded && <LoadingPage/>}
+	    {loaded && 
+	    <>
+		<AdminHeader/>	
+		<ContentBox className="flexColumn">
+		    <AddUser/>
+		</ContentBox>
+		<ContentBox className="flexColumn AICenter">
+		    <h6>Usuários:</h6>
+                    <ListUsers/>
+		</ContentBox>
+	    </>}            
        </div>
     )
 }
