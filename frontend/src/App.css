@@ -127,3 +127,11 @@
 .bgcWhite{
   background-color: white;
 }
+
+.focus{
+  transition: transform .125s;
+}
+
+.focus:hover{
+  transform: scale(1.05);
+}
