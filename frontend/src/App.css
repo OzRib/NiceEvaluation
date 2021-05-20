@@ -48,6 +48,10 @@
   color:white;
 }
 
+.blackText{
+  color: black;
+}
+
 .boldText{
   font-weight: bold;
 }
