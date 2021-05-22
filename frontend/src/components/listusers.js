@@ -2,9 +2,13 @@ import React from 'react';
 import User from './user';
 import { Spinner } from 'react-bootstrap';
 
-export default function ListUsers(){
+export default function ListUsers(props){
 	const [loaded, setLoaded] = React.useState(false)
 	const [data, setData] = React.useState([])
+
+	function success(message){
+		props.onSuccess(message)
+	}
 
 	async function loadData(){
 		const req = await fetch('/getUsers.php')
@@ -27,7 +31,15 @@ export default function ListUsers(){
 			{loaded && (
 				<>
 					{data.map((obj, key)=>(
-						<User usuario={obj} key={key}/>
+						<User 
+							usuario={obj} 
+							key={key}
+							onSuccess={
+							message => {
+							    success(message)
+							}
+						    }
+						/>
 					))}
 				</>
 			)}
