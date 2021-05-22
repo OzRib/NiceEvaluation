@@ -1,29 +1,37 @@
 import React from 'react';
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Button, Modal, Form, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSave } from '@fortawesome/free-solid-svg-icons';
+import { addUser } from '../communication';
 
-export default function AddUser(){
+export default function AddUser(props){
     const [show, setShow] = React.useState(false)
+    const [showError, setShowError] = React.useState(false)
+    const [error, setError] = React.useState(null)
+
     function handleClick(){
         setShow(true)
     }
 
     function handleClose(){
         setShow(false)
+	setShowError(false)
+	setError(null)
     }
 
     async function handleSubmit(event){
         event.preventDefault()
         const form = event.target
 
-        const req = await fetch('/addUser.php', {
-		method: 'POST',
-		body: new FormData(form)
-	})
+	const resp = await addUser(form)
 
-        const resp = await req.text()
-        console.log(resp) 
+        if(resp.created){
+	    handleClose()
+	    props.onSuccess('Usuário adicionado')
+	}else{
+	    setError(resp.error)
+	    setShowError(resp.error)
+	}
     }
 
     return(
@@ -39,6 +47,9 @@ export default function AddUser(){
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+	    	    <Alert show={showError} variant="danger">
+	    		{error}
+	    	    </Alert>
                     <Form name="addUser" onSubmit={event => {handleSubmit(event)}}>
                         <Form.Label htmlFor="nome">Nome Completo</Form.Label>
                         <Form.Control 
