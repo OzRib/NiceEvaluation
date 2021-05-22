@@ -26,7 +26,9 @@ export default function AdminChoice(){
 	    setLoaded(true)
     } 
 
-    onLoad()
+    React.useEffect(async ()=>{
+	await onLoad()
+    }, [])
     return(
         <div id="admin-choice">
 	    {!loaded && <LoadingPage/>}
