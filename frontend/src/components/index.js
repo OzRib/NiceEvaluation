@@ -6,5 +6,16 @@ import ListUsers from './listusers.js';
 import User from './user';
 import EditUserForm from './edituserform';
 import ShowUser from './showuser';
+import SuccessAlert from './successalert';
 
-export { IconLogo, ContentBox, AddUser, AdminHeader, ListUsers, User }
+export { 
+	IconLogo, 
+	ContentBox, 
+	AddUser, 
+	AdminHeader, 
+	ListUsers, 
+	User, 
+	EditUserForm, 
+	ShowUser,
+	SuccessAlert
+}
