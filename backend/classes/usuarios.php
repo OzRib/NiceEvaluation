@@ -72,6 +72,14 @@ class Usuario{
 	
 	}
 
+	public function mostraDados():array{
+		return [
+			'nome'=>$this->nome,
+			'nomeUsuario'=>$this->nomeUsuario,
+			'email'=>$this->email
+		];
+	}
+
 	private function verificaEmail(string $dado):bool{
 		
 	}
