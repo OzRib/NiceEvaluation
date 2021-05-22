@@ -1,11 +1,23 @@
 import React from 'react';
 import './manage-users.css';
 import { checkLogin, userControl } from '../../communication';
-import { ContentBox, ListUsers, AdminHeader, AddUser } from '../../components';
+import { ContentBox, ListUsers, AdminHeader, AddUser, SuccessAlert } from '../../components';
 import { LoadingPage } from '../';
 
 export default function ManageUsers(){
     const [loaded, setLoaded] = React.useState(false)
+    const [showMessage, setShowMessage] = React.useState(false)
+    const [message, setMessage] = React.useState(null)
+
+    function success(message){
+	reloadUsers()
+	setMessage(message)
+	setShowMessage(true)
+	setTimeout(()=>{
+	    setShowMessage(false)
+	}, 3000)
+    }
+
     async function onLoad(){
         const actions = {
             'user': function(){
@@ -34,12 +46,21 @@ export default function ManageUsers(){
 	    <>
 		<AdminHeader/>	
 		<ContentBox className="flexColumn">
-		    <AddUser/>
+		    <AddUser onSuccess={
+			message => {
+			    success(message)
+			}
+		    }/>
 		</ContentBox>
 		<ContentBox className="flexColumn AICenter">
 		    <h6>Usuários:</h6>
                     <ListUsers/>
 		</ContentBox>
+		<SuccessAlert
+		    show={showMessage}
+		>
+		    {message}
+		</SuccessAlert>
 	    </>}            
        </div>
     )
