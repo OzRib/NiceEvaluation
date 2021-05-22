@@ -86,14 +86,14 @@ export default function AddUser(props){
                                     id="Administrador"
                                     label="Administrador"
                                     name="admin"
-                                    value={1}
+                                    value={'1'}
                                 />
                                 <Form.Check
                                     type="radio"
                                     id="Professor"
                                     label="Professor"
                                     name="admin"
-                                    value={0}
+                                    value={'0'}
                                 />
                             </div>
                             <div className="w100p flexRow JCFlexEnd">
