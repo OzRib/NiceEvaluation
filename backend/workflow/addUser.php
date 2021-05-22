@@ -4,13 +4,18 @@ require_once(__DIR__.'/../classes/usuarios.php');
 $resp = ['created'=>false];
 
 try{
-	$requirements = ['nome', 'nomeUsuario', 'email', 'senha'];
-	foreach($requirements as $requirement){
+	$requirements = [
+		'nome'=>'"Nome Completo"',
+		'nomeUsuario'=>'"Nome de Usuário"', 
+		'email'=>'"Email"', 
+		'senha'=>'"Senha"'
+	];
+	foreach($requirements as $requirement=>$value){
 		if(empty($_POST[$requirement]))
-			throw new Exception('Campo '.$requirement.' vazio');
+			throw new Exception('Campo '.$value.' vazio');
 	}
 
-	if(empty($_POST['admin']))
+	if($_POST['admin'] === null)
 		throw new Exception('Escolha entre Administrador e Professor');
 
 	$dados = $_POST;
