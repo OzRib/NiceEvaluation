@@ -9,6 +9,10 @@ export default function User(props){
     const [edit, setEdit] = React.useState(false)
     const [show, setShow] = React.useState(false)
 
+    function success(message){
+	props.onSuccess(message)
+    }
+
     return(
         <>
             <div 
@@ -46,7 +50,16 @@ export default function User(props){
 		    <Modal.Title>Editar usuário</Modal.Title>
 		</Modal.Header>
 		<Modal.Body>
-		    <EditUserForm usuario={props.usuario}/>
+		    <EditUserForm 
+	    		usuario={props.usuario}
+	    		onSuccess={
+			    message =>{
+				setEdit(false)
+				success(message)
+			    
+			    }
+			}
+	    	    />
 		</Modal.Body>
 	    </Modal>
 	    <Modal
@@ -59,7 +72,13 @@ export default function User(props){
 		    <Modal.Title>{props.usuario.nome}</Modal.Title>
 	        </Modal.Header>
 	    	<Modal.Body>
-		    <ShowUser usuario={props.usuario}/>
+		    <ShowUser 
+	    		usuario={props.usuario} 
+	    		onSuccess={message =>{
+			    setShow(false)
+			    success(message)
+			}}
+	    	    />
 	        </Modal.Body>
 	    </Modal>
 	</>
