@@ -7,7 +7,17 @@ import { LoadingPage } from '../';
 export default function ManageUsers(){
     const [loaded, setLoaded] = React.useState(false)
     const [showMessage, setShowMessage] = React.useState(false)
+    const [listUsers, setListUsers] = React.useState(true)
     const [message, setMessage] = React.useState(null)
+
+    function reloadUsers(){
+	let reload = false
+
+	for(var x=0; x<2; x++){
+	    setListUsers(reload)
+	    reload = !reload
+	}
+    }
 
     function success(message){
 	reloadUsers()
@@ -54,7 +64,13 @@ export default function ManageUsers(){
 		</ContentBox>
 		<ContentBox className="flexColumn AICenter">
 		    <h6>Usuários:</h6>
-                    <ListUsers/>
+		    {listUsers && <ListUsers 
+		    	onSuccess={
+			    message => {
+				success(message)
+			    }	
+		    	}
+		    />}
 		</ContentBox>
 		<SuccessAlert
 		    show={showMessage}
