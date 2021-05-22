@@ -42,7 +42,8 @@ export default function ManageUsers(){
         const action = userControl(resp)
         if(actions[action.action] !== undefined)
             actions[action.action]()
-	setLoaded(true)
+	else
+	    setLoaded(true)
     }
 
     React.useEffect(async ()=>{
