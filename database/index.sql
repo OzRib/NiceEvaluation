@@ -185,7 +185,7 @@ INSERT `NiceEvaluation`.`Materia` (nome, descricao)
         "Pequena implementação de software em PHP"
     );
     
-### admin user definition ###
+### default admin user definition ###
 
 ### user = admin ###
 ### password = root ###
@@ -197,6 +197,12 @@ INSERT `NiceEvaluation`.`Usuario` (nome, nomeUsuario, email, hashAndSalt, salt)
         "admin@root.com",
         "edfd077354b2563ae43f171e55843fc24fe62cedb17739ce992953c207e099d9",
         "04452cbb"
+    );
+
+INSERT `NiceEvaluation`.`Administrador` (Usuario_nomeUsuario, Usuario_email)
+	VALUES(
+	"admin",
+	"admin@root.com"
     );
 
 SET SQL_MODE=@OLD_SQL_MODE;
