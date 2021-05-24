@@ -61,7 +61,7 @@ ENGINE = InnoDB;
 -- Table `NiceEvaluation`.`Questao`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `NiceEvaluation`.`Questao` (
-  `idQuestao` INT(9) NOT NULL,
+  `idQuestao` INT(9) NOT NULL AUTO_INCREMENT,
   `itens` JSON NULL,
   `corpo` TEXT NOT NULL,
   `resposta` TEXT NOT NULL,
