@@ -142,4 +142,40 @@ function listUsers():array{
 	
 	return $result;
 }
+
+function listSubjects():array{
+	GLOBAL $env;
+
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
+	$req = mysqlQuery($connection, 'SELECT  
+		nome, 
+		descricao, 
+		COUNT(Materia_nome) AS questoes 
+	FROM Materia LEFT JOIN Questao ON Materia_nome=nome 
+	GROUP BY nome;');
+	$result = $req->fetch_all();
+
+	$subjectSkeleton = [
+		0=>'nome',
+		1=>'descricao',
+		2=>'questoes'
+	];
+
+	$subjects = [];
+
+	foreach($result as $id=>$subject){
+		$tempSubject = [];
+
+		foreach($subject as $key=>$value){
+		       $tempSubject[$subjectSkeleton[$key]] = $value;
+		}
+
+		$tempSubject['questoes'] = (int) $tempSubject['questoes'];
+		$tempSubject['id'] = $id;
+
+		$subjects[] = $tempSubject;
+	}
+
+	return $subjects;
+}
 ?>
