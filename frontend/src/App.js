@@ -10,7 +10,7 @@ function App() {
       <HashRouter>
 	<Route exact path='/' component={Login}/>
 	<Route exact path='/admin-choice' component={AdminChoice}/>
-	<Route exact path='/manage-users' component={ManageUsers}/
+	<Route exact path='/manage-users' component={ManageUsers}/>
 	<Route exact path='/teacher-page' component={TeacherPage}/>
       </HashRouter>
     </div>
