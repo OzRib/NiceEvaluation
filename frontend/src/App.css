@@ -3,6 +3,25 @@
   margin-bottom: 2%;
 }
 
+.book{
+  font-size: 2.7rem;
+  color: white;
+  margin: 4%
+}
+
+.logoIcon{
+  margin: 0 1%;
+  max-width: 9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.perfil{
+  margin: 0 2%;
+}
+
 .flexRow{
   display: flex;
   flex-direction: row;
