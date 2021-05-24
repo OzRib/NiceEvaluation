@@ -1,7 +1,7 @@
 import React from 'react';
 import './manage-users.css';
 import { checkLogin, userControl } from '../../communication';
-import { ContentBox, ListUsers, AdminHeader, AddUser, SuccessAlert } from '../../components';
+import { ContentBox, ListUsers, Header, AddUser, SuccessAlert } from '../../components';
 import { LoadingPage } from '../';
 
 export default function ManageUsers(){
@@ -55,7 +55,7 @@ export default function ManageUsers(){
 	    {!loaded && <LoadingPage/>}
 	    {loaded && 
 	    <>
-		<AdminHeader/>	
+		<Header/>	
 		<ContentBox className="flexColumn">
 		    <AddUser onSuccess={
 			message => {
