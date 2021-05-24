@@ -178,4 +178,17 @@ function listSubjects():array{
 
 	return $subjects;
 }
+
+function listQuestions(string|null $subject=null):array|null{
+	GLOBAL $env;
+
+	$complement = $subject ? 'WHERE Materia_nome="'.$subject.'";':
+';';
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
+	$req = mysqlQuery($connection, 'SELECT * FROM Questao '.$complement);
+	$result = $req->fetch_all();
+
+	return $result;
+	
+}
 ?>
