@@ -149,40 +149,40 @@ ENGINE = InnoDB;
 ### Subjects definition ###
 INSERT `NiceEvaluation`.`Materia` (nome, descricao) 
 	VALUES(
-		`Programação Web(Javascript Frameworks)`, 
-		`Introdução aos conceitos básicos de Programação Web, juntamente com Javascript, HTML e CSS`
+		"Programação Web(Javascript Frameworks)", 
+	"Introdução aos conceitos básicos de Programação Web, juntamente com Javascript, HTML e CSS"
     ),
     (
-		`Lógica de Programação`,
-        `Conceitos básicos e iniciação à programação, lógica e algoritmos`
+		"Lógica de Programação",
+        "Conceitos básicos e iniciação à programação, lógica e algoritmos"
     ),
     (
-		`PHP avançado(Laravel Framework)`,
-        `Especialização do PHP e introdução ao framework Laravel`
+		"PHP avançado(Laravel Framework)",
+        "Especialização do PHP e introdução ao framework Laravel"
     ),
     (
-		`Python avançado(Django Framework)`,
-        `Especialização em Python e introdução ao Django Framework para Python na Web`
+		"Python avançado(Django Framework)",
+        "Especialização em Python e introdução ao Django Framework para Python na Web"
     ),
     (
-		`Linguagens de Marcação(HTML/CSS)`,
-        `Conceitos básicos das linguagens de marcação mais usadas no mercado(HTML/CSS)`
+		"Linguagens de Marcação(HTML/CSS)",
+        "Conceitos básicos das linguagens de marcação mais usadas no mercado(HTML/CSS)"
     ),
     (
-		`Introdução ao Java`,
-        `Introdução e conceitos básicos da linguagem Java`
+		"Introdução ao Java",
+        "Introdução e conceitos básicos da linguagem Java"
     ),
     (
-		`Estrutura de Dados`,
-        `Conceitos de estrutura e manipulação de dados e memória em programas gerais`
+		"Estrutura de Dados",
+        "Conceitos de estrutura e manipulação de dados e memória em programas gerais"
     ),
     (
-		`Projeto de Software`,
-        `Aplicação da teoria no mundo real, construção de um projeto de software do zero utilizando tudo aprendido dentroo do curso`
+		"Projeto de Software",
+        "Aplicação da teoria no mundo real, construção de um projeto de software do zero utilizando tudo aprendido dentroo do curso"
     ),
     (
-		`Implementação em PHP`,
-        `Pequena implementação de software em PHP`
+		"Implementação em PHP",
+        "Pequena implementação de software em PHP"
     );
     
 ### admin user definition ###
@@ -192,11 +192,11 @@ INSERT `NiceEvaluation`.`Materia` (nome, descricao)
 
 INSERT `NiceEvaluation`.`Usuario` (nome, nomeUsuario, email, hashAndSalt, salt)
 	VALUES(
-		`admin`,
-        `admin`,
-        `admin@root.com`,
-        `edfd077354b2563ae43f171e55843fc24fe62cedb17739ce992953c207e099d9`,
-        `04452cbb`
+	"admin",
+        "admin",
+        "admin@root.com",
+        "edfd077354b2563ae43f171e55843fc24fe62cedb17739ce992953c207e099d9",
+        "04452cbb"
     );
 
 SET SQL_MODE=@OLD_SQL_MODE;
