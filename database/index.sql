@@ -186,6 +186,20 @@ INSERT `NiceEvaluation`.`Materia` (nome, descricao)
 		`Implementação em PHP`,
         `Pequena implementação de software em PHP`
     );
+    
+### admin user definition ###
+
+### user = admin ###
+### password = root ###
+
+INSERT `NiceEvaluation`.`Usuario` (nome, nomeUsuario, email, hashAndSalt, salt)
+	VALUES(
+		`admin`,
+        `admin`,
+        `admin@root.com`,
+        `edfd077354b2563ae43f171e55843fc24fe62cedb17739ce992953c207e099d9`,
+        `04452cbb`
+    );
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
