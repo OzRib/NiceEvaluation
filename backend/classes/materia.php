@@ -9,7 +9,12 @@ class Materia{
 	public $questoes;
 	public $temas;
 
-	public function __construct(string $nome, string $descricao, array $questoes, array $temas){
+	public function __construct(
+		string $nome, 
+		string $descricao, 
+		array $questoes=[], 
+		array $temas=[]
+	){
 		foreach($questoes as $value){
 			if(!($value instanceof Questao)){
 				throw new Exception('Expected Questao type in questoes for Materia');
