@@ -74,13 +74,13 @@ CREATE TABLE IF NOT EXISTS `NiceEvaluation`.`Questao` (
   CONSTRAINT `fk_Questao_Administrador1`
     FOREIGN KEY (`Administrador_Usuario_nomeUsuario` , `Administrador_Usuario_email`)
     REFERENCES `NiceEvaluation`.`Administrador` (`Usuario_nomeUsuario` , `Usuario_email`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Questao_Materia1`
     FOREIGN KEY (`Materia_nome`)
     REFERENCES `NiceEvaluation`.`Materia` (`nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `NiceEvaluation`.`Professor` (
   CONSTRAINT `fk_Professor_Administrador1`
     FOREIGN KEY (`Administrador_Usuario_nomeUsuario` , `Administrador_Usuario_email`)
     REFERENCES `NiceEvaluation`.`Administrador` (`Usuario_nomeUsuario` , `Usuario_email`)
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -118,8 +118,8 @@ CREATE TABLE IF NOT EXISTS `NiceEvaluation`.`Tema` (
   CONSTRAINT `fk_Tema_Materia1`
     FOREIGN KEY (`Materia_nome`)
     REFERENCES `NiceEvaluation`.`Materia` (`nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -139,13 +139,13 @@ CREATE TABLE IF NOT EXISTS `NiceEvaluation`.`Questao_has_Tema` (
   CONSTRAINT `fk_Questao_has_Tema_Questao1`
     FOREIGN KEY (`Questao_idQuestao` , `Questao_Administrador_Usuario_nomeUsuario` , `Questao_Administrador_Usuario_email` , `Questao_Materia_nome`)
     REFERENCES `NiceEvaluation`.`Questao` (`idQuestao` , `Administrador_Usuario_nomeUsuario` , `Administrador_Usuario_email` , `Materia_nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Questao_has_Tema_Tema1`
     FOREIGN KEY (`Tema_nome` , `Tema_Materia_nome`)
     REFERENCES `NiceEvaluation`.`Tema` (`nome` , `Materia_nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
