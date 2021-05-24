@@ -65,8 +65,8 @@ CREATE TABLE IF NOT EXISTS `NiceEvaluation`.`Questao` (
   `itens` JSON NULL,
   `corpo` TEXT NOT NULL,
   `resposta` TEXT NOT NULL,
-  `Administrador_Usuario_nomeUsuario` VARCHAR(25) NOT NULL,
-  `Administrador_Usuario_email` VARCHAR(50) NOT NULL,
+  `Administrador_Usuario_nomeUsuario` VARCHAR(25) NULL,
+  `Administrador_Usuario_email` VARCHAR(50) NULL,
   `Materia_nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idQuestao`, `Administrador_Usuario_nomeUsuario`, `Administrador_Usuario_email`, `Materia_nome`),
   INDEX `fk_Questao_Administrador1_idx` (`Administrador_Usuario_nomeUsuario` ASC, `Administrador_Usuario_email` ASC) VISIBLE,
@@ -90,8 +90,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `NiceEvaluation`.`Professor` (
   `Usuario_nomeUsuario` VARCHAR(25) NOT NULL,
   `Usuario_email` VARCHAR(50) NOT NULL,
-  `Administrador_Usuario_nomeUsuario` VARCHAR(25) NOT NULL,
-  `Administrador_Usuario_email` VARCHAR(50) NOT NULL,
+  `Administrador_Usuario_nomeUsuario` VARCHAR(25) NULL,
+  `Administrador_Usuario_email` VARCHAR(50) NULL,
   PRIMARY KEY (`Usuario_nomeUsuario`, `Usuario_email`, `Administrador_Usuario_nomeUsuario`, `Administrador_Usuario_email`),
   INDEX `fk_Professor_Administrador1_idx` (`Administrador_Usuario_nomeUsuario` ASC, `Administrador_Usuario_email` ASC) VISIBLE,
   CONSTRAINT `fk_Professor_Usuario1`
