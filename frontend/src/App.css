@@ -140,6 +140,10 @@
   background-color: white;
 }
 
+.bgcRoyal{
+  background-color: royalblue;
+}
+
 .focus{
   transition: transform .125s;
 }
