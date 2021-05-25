@@ -178,12 +178,16 @@ class Administrador extends Usuario{
 
 	}
 
-	public function criarQuestao(string $corpo, string $resposta, bool $objetiva, array|null $itens=null):bool{
-		
+	public function criarQuestao(string $materia, string $corpo, string $resposta, array|null $itens=null):bool{
+		try{
+			addQuestion($materia, $corpo, $resposta, $itens);
+			return true;
+		}catch(Exception $e){
+			return false;
+		}
 	}
 
 	public function excluirQuestoes(array $ids):bool{
-		
 	}
 }
 ?>
