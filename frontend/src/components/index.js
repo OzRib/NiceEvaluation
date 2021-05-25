@@ -10,6 +10,7 @@ import SuccessAlert from './successalert';
 import Search from './search';
 import Subject from './subject';
 import ListSubjects from './listsubjects';
+import Choice from './choice';
 
 export { 
 	IconLogo, 
@@ -23,5 +24,6 @@ export {
 	SuccessAlert,
 	Search,
 	Subject,
-	ListSubjects
+	ListSubjects,
+	Choice
 }
