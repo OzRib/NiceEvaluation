@@ -230,4 +230,12 @@ function addQuestion(string $materia, string $corpo, string $resposta, array $ad
 		"'.$adm['nomeUsuario'].'",
 		"'.$adm['email'].'");');
 }
+
+function rmQuestion(int $id){
+	GLOBAL $env;
+
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
+
+	mysqlQuery($connection, 'DELETE FROM Questao WHERE idQuestao='.$id.';');
+}
 ?>
