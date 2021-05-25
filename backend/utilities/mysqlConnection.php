@@ -191,4 +191,43 @@ function listQuestions(string|null $subject=null):array|null{
 	return $result;
 	
 }
+
+function addQuestion(string $materia, string $corpo, string $resposta, array $adm, array|null $itens=null){
+	GLOBAL $env;
+
+	$admRequires = ['nomeUsuario' =>'nome de usuário', 'email'=>'email'];
+
+	foreach($admRequires as $key=>$value){
+		if(empty($adm[$key]))
+			throw new Exception('Usuário sem '.$value);
+	}
+
+	$search = ['\\', '"'];
+	$replace = ['\\\\', '\"'];
+
+	$jsonItems = json_encode($itens);
+
+	$filteredJsonItems = $itens===null? 'NULL' '"'.str_replace($search, $replace, $jsonItems).'"';
+
+	$filteredBody = str_replace($search, $replace, $corpo);
+	$filteredResponse = str_replace($search, $replace, $resposta);
+
+	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
+
+	mysqlQuery($connection, 'INSERT Questao(
+		itens, 
+		corpo, 
+		resposta, 
+		Materia_nome, 
+		Administrador_Usuario_nomeUsuario,
+		Administrador_Usuario_email 
+	)
+	VALUES(
+		'.$filteredJsonItem.',
+		"'.$filteredBody.'",
+		"'.$filteredResponse.'",
+		"'.$materia.'",
+		"'.$adm['nomeUsuario'].'",
+		"'.$adm['email'].'");');
+}
 ?>
