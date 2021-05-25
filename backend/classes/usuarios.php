@@ -188,6 +188,18 @@ class Administrador extends Usuario{
 	}
 
 	public function excluirQuestoes(array $ids):bool{
+		try{
+			foreach($ids as $value){
+				if(!($value instanceof int))
+					throw new Exception('Esperado que todos os elementos do array sejam inteiros');
+				rmQuestion($value);
+			}
+
+			return true;
+		}catch(Exception $e){
+			return false;
+		}
+
 	}
 }
 ?>
