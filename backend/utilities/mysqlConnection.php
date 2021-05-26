@@ -207,7 +207,7 @@ function addQuestion(string $materia, string $corpo, string $resposta, array $ad
 
 	$jsonItems = json_encode($itens);
 
-	$filteredJsonItems = $itens===null? 'NULL' '"'.str_replace($search, $replace, $jsonItems).'"';
+	$filteredJsonItems = $itens===null? 'NULL':'"'.str_replace($search, $replace, $jsonItems).'"';	
 
 	$filteredBody = str_replace($search, $replace, $corpo);
 	$filteredResponse = str_replace($search, $replace, $resposta);
