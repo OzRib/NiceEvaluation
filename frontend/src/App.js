@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Switch, Route, HashRouter } from 'react-router-dom';
+import { Route, HashRouter } from 'react-router-dom';
 import { 
 	Login, 
 	AdminChoice, 
