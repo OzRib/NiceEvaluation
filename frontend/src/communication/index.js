@@ -5,6 +5,9 @@ import logout from './logout';
 import rmUser from './rmuser';
 import addUser from './adduser';
 import editUser from './edituser';
+import addQuestion from './addquestion';
+import getThemes from './getthemes';
+import getThemesExtra from './getthemesextra';
 
 export { 
 	checkLogin, 
@@ -13,5 +16,8 @@ export {
 	logout, 
 	rmUser, 
 	addUser,
-	editUser
+	editUser,
+	addQuestion,
+	getThemes,
+	getThemesExtra
 }
