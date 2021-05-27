@@ -11,6 +11,10 @@ import Search from './search';
 import Subject from './subject';
 import ListSubjects from './listsubjects';
 import Choice from './choice';
+import Question from './question';
+import AddQuestion from './addquestion';
+import Theme from './theme';
+import ListThemes from './listthemes';
 
 export { 
 	IconLogo, 
@@ -25,5 +29,9 @@ export {
 	Search,
 	Subject,
 	ListSubjects,
-	Choice
+	Choice,
+	Question,
+	AddQuestion,
+	Theme,
+	ListThemes
 }
