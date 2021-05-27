@@ -2,7 +2,7 @@ import React from 'react';
 import { addQuestion } from '../communication';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faShare } from '@fortawesome/free-solid-svg-icons';
-import { Form, Button, InputGroup, ListGroup } from 'react-bootstrap';
+import { Form, Button, InputGroup } from 'react-bootstrap';
 
 export default class AddQuestionForm extends React.Component{
 	constructor(props){
