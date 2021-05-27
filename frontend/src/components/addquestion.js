@@ -1,6 +1,6 @@
 import React from 'react';
 import AddQuestionForm from './addquestionform';
-import { Modal, Form, Button } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,10 +10,6 @@ export default class AddQuestion extends React.Component{
 		this.state = {
 			show: false
 		}
-	}
-
-	addItem(){
-		const items = this.state.items
 	}
 
 	handleClick(){
