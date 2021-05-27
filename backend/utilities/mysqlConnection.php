@@ -223,7 +223,7 @@ function addQuestion(string $materia, string $corpo, string $resposta, array $ad
 		Administrador_Usuario_email 
 	)
 	VALUES(
-		'.$filteredJsonItem.',
+		'.$filteredJsonItems.',
 		"'.$filteredBody.'",
 		"'.$filteredResponse.'",
 		"'.$materia.'",
