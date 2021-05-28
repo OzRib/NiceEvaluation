@@ -29,8 +29,7 @@ class Usuario{
 
 		$typeData = filter_var($id, FILTER_VALIDATE_EMAIL) ? 'email' : 'nomeUsuario';
 
-		$connection = mysqlConnection('localhost', 'root', 'senha');
-		$result = mysqlQuery($connection, 'SELECT hashAndSalt, salt FROM Usuario WHERE '.$typeData.'="'.$id.'";');
+		$result = mysqlQuery('SELECT hashAndSalt, salt FROM Usuario WHERE '.$typeData.'="'.$id.'";');
 
 		$data = $result->fetch_assoc();
 		if($data == null)
