@@ -179,7 +179,8 @@ class Administrador extends Usuario{
 
 	public function criarQuestao(string $materia, string $corpo, string $resposta, array|null $itens=null):bool{
 		try{
-			addQuestion($materia, $corpo, $resposta, $itens);
+			$admData = $this->mostraDados();
+			addQuestion($materia, $corpo, $resposta, $admData, $itens);
 			return true;
 		}catch(Exception $e){
 			return false;
