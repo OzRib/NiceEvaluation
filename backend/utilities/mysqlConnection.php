@@ -195,11 +195,77 @@ function addQuestion(string $materia, string $corpo, string $resposta, array $ad
 		"'.$adm['email'].'");');
 }
 
-function rmQuestion(int $id){
-	GLOBAL $env;
+function rmQuestion(int $id):void{
+	mysqlQuery('DELETE FROM Questao WHERE idQuestao='.$id.';');
+}
 
-	$connection = mysqlConnection($env['DB_HOST'], $env['DB_USER'], $env['DB_PASSWD']);
+function addTheme(string $subjectName, string $themeName):void{
+	mysqlQuery('INSERT Tema(nome, Materia_nome) VALUES(
+		"'.$themeName.'", "'.$subjectName.'");');
+}
 
-	mysqlQuery($connection, 'DELETE FROM Questao WHERE idQuestao='.$id.';');
+function rmTheme(string $subjectName, string $themeName):void{
+	mysqlQuery('DELETE FROM Tema WHERE 
+		nome="'.$themeName.'" AND Materia_nome="'.$subjectName.'";');
+}
+
+function listThemesInSubject(string $subjectName):array|null{
+	$req = mysqlQuery('SELECT nome FROM Tema WHERE Materia_nome="'.$subjectName.'";');
+	
+	$themes = $req->fetch_all();
+
+	return $themes;
+}
+
+function addQuestionInTheme(int $questionId, string $themeName, string $subjectName):void{
+	mysqlQuery('INSERT Questao_has_Tema(
+			Questao_idQuestao,
+			Questao_Materia_nome,
+			Tema_nome,
+			Tema_Materia_nome
+		) VALUES(
+			'.$questionId.',
+			"'.$subjectName.'",
+			"'.$themeName.'",
+			"'.$subjectName.'"
+		);');
+}
+
+function rmQuestionOfTheme(int $questionId, string $subjectName):void{
+	mysqlQuery('DELETE FROM Questao_has_Tema WHERE 
+		Questao_idQuestao='.$questionId.' AND Tema_Materia_nome="'.$subjectName.'";');
+}
+
+function countQuestionsInTheme(string $theme):int{
+	$req = mysqlQuery('SELECT COUNT(Questao_idQuestao) AS questoes FROM Questao_has_Tema WHERE Tema_nome="'.$theme.'";');
+
+	$resp = $req->fetch_assoc();
+	$result = (int) $resp['questoes'];
+	
+	return $result;
+}
+
+function countAllQuestionsInSubject(string $subject):int{
+	$req = mysqlQuery('SELECT COUNT(idQuestao) as questoes FROM Questao WHERE Materia_nome="'.$subject.'";');
+
+	$resp = $req->fetch_assoc();
+	$result = (int) $resp['questoes'];
+
+	return $result;
+}
+
+function countQuestionsInSubjectWithoutTheme(string $subject):int{
+	$req = mysqlQuery('SELECT COUNT(idQuestao) AS questoes 
+		FROM Questao JOIN Questao_has_Tema 
+		ON Questao_idQuestao!=idQuestao 
+		WHERE Questao.Materia_nome="'.$subject.'";');
+	$resp = $req->fetch_assoc();
+	
+	$total = countAllQuestionsInSubject($subject);
+	$withTheme = (int) $resp['questoes'];
+
+	$withoutTheme = $total-$withTheme;
+
+	return $withoutTheme;
 }
 ?>
