@@ -54,13 +54,13 @@ export default function ListThemes({id, subjectId}){
 		<>
 			<Theme
 				questions={extra.todas}
-				href={'/#/subject/'+subjectId+'/all'}
+				href={'/#/subject/'+subjectId+'/theme/all'}
 			>
 				Todas as questões
 			</Theme>
 			<Theme 
 				questions={extra.semTema}
-				href={'/#/subject/'+subjectId+'/no-theme'}
+				href={'/#/subject/'+subjectId+'/theme/no-theme'}
 			>
 				Questões sem temas
 			</Theme>
