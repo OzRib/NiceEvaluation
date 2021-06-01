@@ -1,9 +1,14 @@
-export default function Question({questao}){
+export default function Question({questao, position}){
 	const { id, corpo, itens, resposta } = questao
 
 	return(
 		<div className="border-transp border-rad20p flexColumn w100p po8 mt1p">
-			<h5 className="boldText">Questão Nº {id}</h5>
+			<h5 className="boldText">Questão Nº {position}</h5>
+			<h6
+				className="text-muted"
+			>
+				Id da questão: {id}
+			</h6>
 			<h5>{corpo}</h5>
 			{itens ? 
 			<p>
