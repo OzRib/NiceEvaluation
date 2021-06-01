@@ -9,7 +9,8 @@ import {
 	TeacherPage, 
 	Subject,
 	Generate,
-	ShowQuestions
+	ShowQuestions,
+	Theme
 } from './pages';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 	<Route exact path='/subject/:id' component={Subject}/>
 	<Route exact path='/subject/:id/generate' component={Generate}/>
 	<Route exact path='/subject/:id/show-questions' component={ShowQuestions}/>
+	<Route exact path='/subject/:subjId/theme/:theme' component={Theme}/>
       </HashRouter>
     </div>
   );
