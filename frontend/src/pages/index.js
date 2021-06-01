@@ -6,6 +6,7 @@ import TeacherPage from './teacher-page/teacher-page';
 import Subject from './subject/subject.js';
 import Generate from './generate/generate.js';
 import ShowQuestions from './show-questions/show-questions';
+import Theme from './theme/theme';
 
 export { Login, 
 	AdminChoice, 
@@ -14,5 +15,6 @@ export { Login,
 	TeacherPage, 
 	Subject,
 	Generate,
-	ShowQuestions
+	ShowQuestions,
+	Theme
 }
