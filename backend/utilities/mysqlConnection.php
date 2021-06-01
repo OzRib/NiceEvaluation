@@ -168,6 +168,17 @@ function listQuestionsInTheme(string $subject, string $theme):array|null{
 	return $result;
 }
 
+function listQuestionsWithoutTheme(string $subjectName):array|null{
+	$req = mysqlQuery('SELECT idQuestao, itens, corpo, resposta 
+		FROM Questao LEFT JOIN Questao_has_Tema ON 1=1  
+		WHERE Questao_idQuestao!=idQuestao  
+		AND Materia_nome="'.$subjectName.'";');
+
+	$result = $req->fetch_all();
+
+	return $result;
+}
+
 function addQuestion(string $materia, string $corpo, string $resposta, array $adm, array|null $itens=null):void{
 	$admRequires = ['nomeUsuario' =>'nome de usuário', 'email'=>'email'];
 
