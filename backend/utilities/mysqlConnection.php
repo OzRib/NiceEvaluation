@@ -151,10 +151,8 @@ function listSubjects():array{
 	return $subjects;
 }
 
-function listQuestions(string|null $subject=null):array|null{
-	$complement = $subject ? 'WHERE Materia_nome="'.$subject.'";':
-';';
-	$req = mysqlQuery('SELECT * FROM Questao '.$complement);
+function listQuestions(string $subject):array|null{
+	$req = mysqlQuery('SELECT idQuestao, itens, corpo, resposta FROM Questao WHERE Materia_nome="'.$subject.'";');
 	$result = $req->fetch_all();
 
 	return $result;
