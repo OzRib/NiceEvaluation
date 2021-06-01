@@ -18,11 +18,9 @@ export default function Question({questao, position}){
 				</>
 				))}
 			</p>:null}
+			<b>Resposta:</b>
 			<p>
-				{itens ? 
-				<>
-					{resposta.item}) {resposta.resposta}
-				</> : resposta}
+				{resposta}
 			</p>
 		</div>
 	)
