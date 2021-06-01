@@ -236,8 +236,10 @@ function rmQuestionOfTheme(int $questionId, string $subjectName):void{
 		Questao_idQuestao='.$questionId.' AND Tema_Materia_nome="'.$subjectName.'";');
 }
 
-function countQuestionsInTheme(string $theme):int{
-	$req = mysqlQuery('SELECT COUNT(Questao_idQuestao) AS questoes FROM Questao_has_Tema WHERE Tema_nome="'.$theme.'";');
+function countQuestionsInTheme(string $theme, string $subjectName):int{
+	$req = mysqlQuery('SELECT COUNT(Questao_idQuestao) AS questoes
+		FROM Questao_has_Tema WHERE Tema_nome="'.$theme.'" 
+		AND Tema_Materia_nome="'.$subjectName.'";');
 
 	$resp = $req->fetch_assoc();
 	$result = (int) $resp['questoes'];
