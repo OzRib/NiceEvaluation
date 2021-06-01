@@ -8,6 +8,8 @@ import editUser from './edituser';
 import addQuestion from './addquestion';
 import getThemes from './getthemes';
 import getThemesExtra from './getthemesextra';
+import getQuestions from './getquestions';
+import deleteQuestions from './deletequestions';
 
 export { 
 	checkLogin, 
@@ -19,5 +21,7 @@ export {
 	editUser,
 	addQuestion,
 	getThemes,
-	getThemesExtra
+	getThemesExtra,
+	getQuestions,
+	deleteQuestions
 }
