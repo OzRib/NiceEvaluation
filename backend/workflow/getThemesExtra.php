@@ -10,10 +10,13 @@ try{
 	if($_POST['materia'] === null)
 		throw new Exception('É necessário uma matéria');
 
-	$subject = $_POST['materia'];
+	$subjectId = (int) $_POST['materia'];
+	$subjects = listSubjects();
+	$subject = $subjects[$subjectId];
+	$subjectName = $subject['nome'];
 
-	$all = countAllQuestionsInSubject($subject);
-	$withoutTheme = countQuestionsInSubjectWithoutTheme($subject);
+	$all = countAllQuestionsInSubject($subjectName);
+	$withoutTheme = countQuestionsInSubjectWithoutTheme($subjectName);
 
 	$resp = [
 		'semTema'=>$withoutTheme,
