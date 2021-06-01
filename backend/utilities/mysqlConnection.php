@@ -256,17 +256,13 @@ function countAllQuestionsInSubject(string $subject):int{
 	return $result;
 }
 
-function countQuestionsInSubjectWithoutTheme(string $subject):int{
+function countQuestionsInSubjectWithoutTheme(string $subjectName):int{
 	$req = mysqlQuery('SELECT COUNT(idQuestao) AS questoes 
-		FROM Questao JOIN Questao_has_Tema 
-		ON Questao_idQuestao!=idQuestao 
-		WHERE Questao.Materia_nome="'.$subject.'";');
+		FROM Questao LEFT JOIN Questao_has_Tema ON 1=1 
+		WHERE Questao_idQuestao!=idQuestao 
+		AND Materia_nome="'.$subjectName.'";');
 	$resp = $req->fetch_assoc();
-	
-	$total = countAllQuestionsInSubject($subject);
-	$withTheme = (int) $resp['questoes'];
-
-	$withoutTheme = $total-$withTheme;
+	$withoutTheme = (int) $resp['questoes'];
 
 	return $withoutTheme;
 }
