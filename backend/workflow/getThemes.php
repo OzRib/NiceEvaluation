@@ -28,7 +28,7 @@ try{
 		foreach($theme as $key=>$value)
 			$tempTheme[$themeSkeleton[$key]] = $value;
 		$tempTheme['id'] = $number;
-		$tempTheme['questoes'] = countQuestionsInTheme($tempTheme['nome']);
+		$tempTheme['questoes'] = countQuestionsInTheme($tempTheme['nome'], $subjectName);
 
 		$finalThemes[] = $tempTheme;
 	}
