@@ -11,6 +11,7 @@ import Search from './search';
 import Subject from './subject';
 import ListSubjects from './listsubjects';
 import Choice from './choice';
+import ListQuestions from './listquestions';
 import Question from './question';
 import AddQuestion from './addquestion';
 import Theme from './theme';
@@ -31,6 +32,7 @@ export {
 	ListSubjects,
 	Choice,
 	Question,
+	ListQuestions,
 	AddQuestion,
 	Theme,
 	ListThemes
