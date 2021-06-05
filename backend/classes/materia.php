@@ -10,7 +10,7 @@ class Materia{
 
 	public function __construct(
 		string $nome, 
-		string $descricao, 
+		string $descricao='', 
 		array $questoes=[], 
 		array $temas=[]
 	){
