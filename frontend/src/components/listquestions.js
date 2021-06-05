@@ -75,7 +75,7 @@ export default function ListQuestions({subjectId, theme}){
 					</Button>
 				</div>
 				{data.map((question, key)=>(
-					<div className="w100p flexRow AICenter">
+					<div className="w100p flexRow AICenter focus">
 						{del && 
 						<FormCheck onChange={event => {
 							const { checked } = event.target
