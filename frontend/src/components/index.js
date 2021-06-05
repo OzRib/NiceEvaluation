@@ -16,6 +16,8 @@ import Question from './question';
 import AddQuestion from './addquestion';
 import Theme from './theme';
 import ListThemes from './listthemes';
+import ThemeBadge from './themebadge';
+import ListThemeBadges from './listthemebadges';
 
 export { 
 	IconLogo, 
@@ -35,5 +37,7 @@ export {
 	ListQuestions,
 	AddQuestion,
 	Theme,
-	ListThemes
+	ListThemes,
+	ThemeBadge,
+	ListThemeBadges
 }
