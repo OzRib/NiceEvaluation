@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__.'/../utilities/mysqlConnection.php');
+require_once(__DIR__.'/../classes/materia.php');
 
 try{
 	session_start();
@@ -14,34 +15,19 @@ try{
 
 	$subjectId = (int) $_POST['materia'];
 	$subjects = listSubjects();
-	$subject = $subjects[$subjectId];
-	$subjectName = $subject['nome'];
+	$subjectData = $subjects[$subjectId];
+	$subjectName = $subjectData['nome'];
 
 	$themeId = (int) $_POST['tema'];
 	$themes = listThemesInSubject($subjectName);
-	$theme = $themes[$themeId];
-	$themeName = $theme[0];
+	$themeData = $themes[$themeId];
+	$themeName = $themeData[0];
 
-	$questions = listQuestionsInTheme($subjectName, $themeName);
+	$subject = new Materia($subjectName);
+	$subject->carregaQuestoes('comTema', $themeName);
+	$questions = $subject->mostraQuestoes();
 
-	$tempQuestion = [];
-	$finalQuestions = [];
-	$questionSkeleton = [
-		0=>'id',
-		1=>'itens',
-		2=>'corpo',
-		3=>'resposta'
-	];
-
-	foreach($questions as $number=>$question){
-		foreach($question as $key=>$value){
-			$tempQuestion[$questionSkeleton[$key]] = $value;
-		}
-		$finalQuestions[] = $tempQuestion;
-	}
-
-	$resp = $finalQuestions;
-	
+	$resp = $questions;	
 }catch(Exception $e){
 	$resp = ['error'=>$e->getMessage()];
 }
