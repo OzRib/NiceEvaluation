@@ -236,6 +236,21 @@ function listThemesInSubject(string $subjectName):array|null{
 	return $themes;
 }
 
+function listThemesInQuestion(int $questionId):array|null{
+	$req = mysqlQuery('SELECT Tema_nome FROM Questao_has_Tema
+		WHERE Questao_idQuestao='.$questionId.';');
+
+	$resp = $req->fetch_all();
+
+	$names = [];
+
+	foreach($resp as $theme){
+		$names[] = $theme[0];
+	}
+
+	return $names;
+}
+
 function addQuestionInTheme(int $questionId, string $themeName, string $subjectName):void{
 	mysqlQuery('INSERT Questao_has_Tema(
 			Questao_idQuestao,
