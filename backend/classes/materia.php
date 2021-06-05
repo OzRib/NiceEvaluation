@@ -1,7 +1,5 @@
 <?php
 declare(strict_types=1);
-require_once(__DIR__.'/questao.php');
-require_once(__DIR__.'/tema.php');
 require_once(__DIR__.'/../utilities/mysqlConnection.php');
 
 class Materia{
@@ -16,16 +14,6 @@ class Materia{
 		array $questoes=[], 
 		array $temas=[]
 	){
-		foreach($questoes as $value){
-			if(!($value instanceof Questao)){
-				throw new Exception('Expected Questao type in questoes for Materia');
-			}
-		}
-		foreach($temas as $value){
-			if(!($value instanceof Tema)){
-				throw new Exception('Expceted Tema type in temas for Materia');
-			}
-		}
 		$this->nome = $nome;
 		$this->descricao = $descricao;
 		$this->questoes = $questoes;
