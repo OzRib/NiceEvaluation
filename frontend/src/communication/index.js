@@ -10,6 +10,7 @@ import getThemes from './getthemes';
 import getThemesExtra from './getthemesextra';
 import getQuestions from './getquestions';
 import deleteQuestions from './deletequestions';
+import sendToGenerate from './sendtogenerate';
 
 export { 
 	checkLogin, 
@@ -23,5 +24,6 @@ export {
 	getThemes,
 	getThemesExtra,
 	getQuestions,
-	deleteQuestions
+	deleteQuestions,
+	sendToGenerate
 }
