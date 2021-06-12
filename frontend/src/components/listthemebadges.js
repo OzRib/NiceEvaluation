@@ -5,7 +5,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 export default function ListThemeBadges({questionId, themes, onDelete}){
 	return(
 		<div
-			className="flexRow"
+			className="flexRow AICenter"
 			style={{
 				flexWrap: 'wrap'
 			}}
