@@ -112,6 +112,10 @@
   width: 50%;
 }
 
+.wauto{
+  width: auto !important;
+}
+
 .h100p{
   height: 100%;
 }
