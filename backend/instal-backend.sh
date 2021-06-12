@@ -97,7 +97,7 @@ isInstalled=false
 for dir in $dirChecks
 do
 	totalDir=$baseDir/$dir
-	if ! [ -d $totalDir ]
+	if [ -d $totalDir ]
 	then
 		isInstalled=true
 	fi
