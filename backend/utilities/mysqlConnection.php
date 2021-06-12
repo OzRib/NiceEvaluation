@@ -228,6 +228,12 @@ function rmTheme(string $subjectName, string $themeName):void{
 		nome="'.$themeName.'" AND Materia_nome="'.$subjectName.'";');
 }
 
+function rmThemeOfQuestion(string $themeName, int $questionId):void{
+	mysqlQuery('DELETE FROM Questao_has_Tema WHERE
+		Questao_idQuestao='.$questionId.' AND 
+		Tema_nome="'.$themeName.'";');
+}
+
 function listThemesInSubject(string $subjectName):array|null{
 	$req = mysqlQuery('SELECT nome FROM Tema WHERE Materia_nome="'.$subjectName.'";');
 	
