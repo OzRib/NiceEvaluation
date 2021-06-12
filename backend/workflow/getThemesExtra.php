@@ -23,7 +23,7 @@ try{
 		'todas'=>$all
 	];
 }catch(Exception $e){
-	$resp = ['error'=>$e-getMessage()];	
+	$resp = ['error'=>$e->getMessage()];	
 }
 
 echo(json_encode($resp));
