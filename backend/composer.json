@@ -4,5 +4,8 @@
 		"psr-4":{
 			"Env\\": "env/"
 		}
+	},
+	"require": {
+		"dompdf/dompdf": "^1.0"
 	}
 }
