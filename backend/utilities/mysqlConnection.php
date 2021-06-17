@@ -306,4 +306,14 @@ function countQuestionsInSubjectWithoutTheme(string $subjectName):int{
 
 	return $withoutTheme;
 }
+
+function isTheme(string $themeName, $subjectName):bool{
+	$req = mysqlQuery('SELECT IF(COUNT(nome)>0, 1, 0) as isTheme
+		FROM Tema WHERE nome="'.$themeName.'"
+		AND Materia_nome="'.$subjectName.'";');
+
+	$result = $req->fetch_assoc();
+
+	return $result['isTheme'] == '1';
+}
 ?>
