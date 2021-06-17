@@ -55,8 +55,10 @@ export default function ManageUsers(){
 	    {!loaded && <LoadingPage/>}
 	    {loaded && 
 	    <>
-		<Header/>	
 		<ContentBox className="flexColumn">
+		<Header
+		    admin={true}
+		/>
 		    <AddUser onSuccess={
 			message => {
 			    success(message)
