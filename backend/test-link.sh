@@ -2,14 +2,14 @@
 
 serverBaseDir=/srv
 
-dirsToCheck=('classes' 'utilities')
+dirsToCheck=( "classes" "utilities" )
 
 checkDirs(){
 	dir=$1
-	projectContent=$(cat $dir/*)
-	serverContent=$(cat $serverBaseDir/$dir/*)
+	projectContent=$(cat $dir/* || echo 'Error in project')
+	serverContent=$(cat $serverBaseDir/$dir/* || echo 'Error in server')
 
-	if [ "$projectContent"=="$serverContent" ]
+	if [ "$projectContent" = "$serverContent" ]
 	then
 	       echo "$1 OK"
 	else
@@ -17,18 +17,45 @@ checkDirs(){
 	fi
 }
 
-checkWorkflow(){
-	projectContent=$(cat workflow/*)
-	serverContent=$(cat $serverBaseDir/http/*.php)
+checkTemplates(){
+	projectContent=$(
+		cat templates/*.* && 
+		cat templates/classes/* && 
+		cat templates/components/* || 
+		echo 'Error in project'
+	)
 
-	if [ "$projectContent"=="$serverContent" ]
+	serverContent=$(
+		cat /srv/templates/*.* && 
+		cat /srv/templates/classes/* &&
+		cat /srv/templates/components/* || 
+		echo 'Error in server'
+	)
+
+	if [ "$projectContent" = "$serverContent" ]
 	then
-		echo "workflow OK"
+		echo 'templates OK'
 	else
-		echo "Workflow WARNING"
+		echo 'templates WARNING'
 	fi
 }
 
-checkDirs 'classes'
-checkDirs 'utilities'
+checkWorkflow(){
+	projectContent=$(cat workflow/* || echo 'Error in project')
+	serverContent=$(cat $serverBaseDir/http/*.php || echo 'Error in server')
+
+	if [ "$projectContent" = "$serverContent" ]
+	then
+		echo 'workflow OK'
+	else
+		echo 'workflow WARNING'
+	fi
+}
+
+for dir in ${dirsToCheck[*]}
+do
+	checkDirs $dir
+done
+
+checkTemplates
 checkWorkflow
