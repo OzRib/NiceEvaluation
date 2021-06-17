@@ -31,7 +31,7 @@ export default function TeacherPage(){
 	}
 
 	React.useEffect(async ()=>{
-		await onLoad()
+		setLoaded(await onLoad())
 	},[])
 
 	return(
