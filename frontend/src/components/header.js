@@ -1,13 +1,15 @@
+import React from 'react';
 import { Image, Dropdown, DropdownButton, } from 'react-bootstrap';
 import IconLogo from './iconlogo';
 import { logout } from '../communication';
 
-export default function Header(){
+export default function Header({admin}){
     async function handleClick(){
 	const resp = await logout()
 	if(resp.logged === false)
 	    window.location.href = '/#/'
     }
+
     return(
         <div className="fullWidth flexRow AICenter bgcRoyal shadow">
             <IconLogo/>
@@ -24,6 +26,13 @@ export default function Header(){
                         <Dropdown.Item onClick={()=>{handleClick()}}>
                             Sair
                         </Dropdown.Item>
+	    		<Dropdown.Item as="a" href='/#/teacher-page'>
+	    		    Página dos Professores
+			</Dropdown.Item>
+	    		{admin===true &&
+	    		<Dropdown.Item as="a" href="/#/manage-users">
+	    		    Gerenciar usuários
+	    		</Dropdown.Item>}
                     </DropdownButton>
                 </div>
             </div>
