@@ -11,7 +11,8 @@ export default function GenerateForm({subjectId}){
 		event.preventDefault()
 		
 		const form = event.target
-		const haveThemes = form['temas'].checked
+		const checkTemas = form['temas']
+		const haveThemes = checkTemas? checkTemas.checked: false
 
 		const themes = {}
 		
