@@ -45,7 +45,9 @@ export default function ShowQuestions({match:{params}}){
 		{!loaded && <LoadingPage/>}
 		{loaded && 
 		<>
-			<Header/>
+			<Header
+				admin={admin}
+			/>
 			{showAdd &&
 			<ContentBox>
 				<AddQuestion
