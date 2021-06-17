@@ -36,7 +36,7 @@ export default function AddUser(props){
 
     return(
         <>
-            <Button className="w100p" variant="outline-success" onClick={()=>{handleClick()}}>
+            <Button className="w50p" variant="outline-success" onClick={()=>{handleClick()}}>
                 <FontAwesomeIcon icon={faPlus}/>{'  '}
                 Adicionar Usuário
             </Button>
