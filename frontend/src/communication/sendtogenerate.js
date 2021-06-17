@@ -7,7 +7,7 @@ export default async function sendToGenerate(data, subjectId){
 	const req = await fetch('/generate.php', {
 		method: 'POST',
 		headers:{
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/x-www-form-urlencoded'
 		},
 		body: dataToSend
 	})
