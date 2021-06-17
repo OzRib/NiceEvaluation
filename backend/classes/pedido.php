@@ -3,34 +3,38 @@ declare(strict_types=1);
 require_once(__DIR__.'/materia.php');
 
 class Pedido{
-	public $numeroQuestoes;
-	public $questoesObjetivas;
+	public $questoesGerais;
 	public $temas;
-	public $questoesTemas;
 	public $materia;
 
-	public function __construct(Object $pedido){
-		function checkArrayInteger(array $array){
-			foreach($array as $value){
-				if(!($value instanceof int)){
-					return false;
-				}
-			}
-			return true;
-		}
-		$regras = [
-			'numeroQuestoes'=>($pedido->numeroQuestoes instanceof int),
-			'questoesObjetivas'=>($pedido->questoesObjetivas instanceof int),
-			'temas'=>(checkArrayInteger($pedido->temas)),
-			'questoesTemas'=>(chechArrayInteger($pedido->questoesTemas)),
-			'materia'=>($pedido->materia instanceof Materia)
+	public function __construct(array $pedido){
+		$rules = [
+			'materia'=>($pedido['materia'] instanceof Materia),
+			'questoesGerais'=>(gettype($pedido['questoesGerais']) === 'integer'),
+			'temas'=>(gettype($pedido['temas']) === 'array' && $this->checkArrayInteger($pedido['temas']))
 		];
+
+		$messageError = [
+			'materia'=>'Matéria precisa ser um objeto Materia válido',
+			'questoesGerais'=>'As questões gerais precisam ser inteiros',
+			'temas'=>'Os temas precisam ser vetores e seus valores devem ser inteiros'
+		];
+
 		foreach($pedido as $key=>$value){
-			if(!($regras[$key])){
-				throw new Exception('Error with type of '.$key.' in Pedido');
+			if(!($rules[$key])){
+				throw new Exception($messageError[$key]);
 			}
 			$this->$key = $value;
 		}
+	}
+
+	private function checkArrayInteger(array $array):bool{
+		foreach($array as $value){
+			if(gettype($value) !== 'integer')
+				return false;
+		}
+
+		return true;
 	}
 }
 ?>
