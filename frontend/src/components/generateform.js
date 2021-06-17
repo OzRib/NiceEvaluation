@@ -5,7 +5,7 @@ import { getThemes, getThemesExtra, sendToGenerate } from '../communication';
 
 export default function GenerateForm({subjectId}){
 	const [temas, setTemas] = React.useState([])
-	const [valorMaximo, setValorMaximo] = React.useState()
+	const [valorMaximo, setValorMaximo] = React.useState(0)
 
 	async function submit(event){
 		event.preventDefault()
