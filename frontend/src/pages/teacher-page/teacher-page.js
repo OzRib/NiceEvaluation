@@ -6,20 +6,28 @@ import { checkLogin, userControl } from '../../communication';
 
 export default function TeacherPage(){
 	const [loaded, setLoaded] = React.useState(false)
+	const [admin, setAdmin] = React.useState(false)
 
 	async function onLoad(){
 		const actions = {
+			'admin': function(){
+				setAdmin(true)
+				return true
+			},
+			'user': function(){
+				setAdmin(false)
+				return true
+			},
 			'error': function(){
 				window.location.href = '/#/'
+				return false
 			}
 		}
 
 		const resp = await checkLogin()
 		const action = await userControl(resp)
 		if(actions[action.action] !== undefined)
-			actions[action.action]()
-		else
-			setLoaded(true)
+			return actions[action.action]()
 	}
 
 	React.useEffect(async ()=>{
@@ -31,7 +39,9 @@ export default function TeacherPage(){
 		{!loaded && <LoadingPage/>}
 		{loaded &&
 		<>
-			<Header/>
+			<Header
+				admin={admin}
+			/>
 			<ContentBox className="flexColumn">
 				<Search
 					name="pesquisa"
