@@ -68,6 +68,7 @@ class Materia{
 			foreach($question as $key=>$value){
 				$tempQuestion[$questionSkeleton[$key]] = $value;
 			}
+			$tempQuestion['itens'] = $tempQuestion['itens'] !== null ? json_decode($tempQuestion['itens']) : NULL;
 			$tempQuestion['temas'] = listThemesInQuestion((int) $tempQuestion['id']);
 			$finalQuestions[] = $tempQuestion;
 		}
