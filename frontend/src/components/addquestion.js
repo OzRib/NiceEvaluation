@@ -27,7 +27,7 @@ export default class AddQuestion extends React.Component{
 		return(
 		<>
 			<Button
-				className="w100p"
+				className="w50p"
 				variant="outline-success"
 				onClick={()=>{this.handleClick()}}
 			>
