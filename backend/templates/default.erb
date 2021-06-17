@@ -1,0 +1,80 @@
+<%
+  style = File.read("#{BASEDIR}/style.css")
+%>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Prova
+    </title>
+    <style type="text/css">
+      <%= style%>  
+    </style>
+  </head>
+  <body>
+    <header>
+      <h4 class="text-center">
+        <b>Instituto Tecnológico Educacional Soul Academy - 
+          <span>
+            Programação Web(Javascript Frameworks)
+          </span>
+        </b>
+      <h4/>
+      <h5>
+        <br>
+        <b>Aluno:</b>
+        <span class="underline">
+          <% 92.times do%>
+            &nbsp;
+          <%end%>
+        </span>
+        <br>
+        <b>Professor(a):</b>
+        <span class="underline">
+          <% 87.times do%>
+            &nbsp;
+          <%end%>
+        </span>
+      </h5>
+    </header>
+    <%
+      if @questions.class == Array
+        for questionPosition in 0..@questions.length-1
+          question = @questions[questionPosition]
+          questionNumber = questionPosition+1
+
+          unless question.class == Hash
+            raise 'question não é uma hash'
+          end
+
+          body = question['corpo']
+          %>
+            <p class="text-bold">
+              <%= questionNumber%>)<%= body%>
+            </p>
+          <%
+          if question['itens'].class == Array
+            items = question['itens']
+          %>
+            <p>
+              <%for itemNumber in 0..items.length
+                item = items[itemNumber]
+                character = (itemNumber+97).chr
+              %>
+                <%= character%>) <%= item%>
+              <%end%>
+            </p>
+            <br>
+          <%
+          else
+          %>
+            <br>
+          <%
+          end
+        end
+      else
+        raise '@questions não é um array'
+      end%>
+  </body>
+</html>
