@@ -49,7 +49,7 @@ export default function ShowQuestions({match:{params}}){
 				admin={admin}
 			/>
 			{showAdd &&
-			<ContentBox>
+			<ContentBox className="flexColumn AICenter">
 				<AddQuestion
 					subjectId={params.id}
 				/>
