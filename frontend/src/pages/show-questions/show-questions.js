@@ -5,15 +5,18 @@ import { checkLogin, userControl } from '../../communication';
 
 export default function ShowQuestions({match:{params}}){
 	const [loaded, setLoaded] = React.useState(false)
+	const [admin, setAdmin] = React.useState(false)
 	const [showAdd, setShowAdd] = React.useState(false)
 
 	async function onLoad(){
 		const actions = {
 			'admin': function(){
 				setShowAdd(true)
+				setAdmin(true)
 			},
 			'user': function(){
 				setShowAdd(false)
+				setAdmin(false)
 			}
 		}
 
