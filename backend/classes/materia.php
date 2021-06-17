@@ -87,5 +87,20 @@ class Materia{
 	public function selecionaTemas(array $temas):array{
 		
 	}
+
+	public function sorteiaQuestoes(int $totalQuestoes):array{
+		$sort = function(){
+			$sort = (bool) rand(0,1);
+			$toUp = $sort? -1: 1;
+			return $toUp;
+		};
+
+		$questions = $this->questoes;
+		usort($questions, $sort);
+
+		$sortedQuestions = array_slice($questions, 0, $totalQuestoes);
+
+		return $sortedQuestions;
+	}
 }
 ?>
