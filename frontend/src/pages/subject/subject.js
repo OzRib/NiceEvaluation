@@ -40,7 +40,9 @@ export default function Subject({match:{params}}){
 			{!loaded && <LoadingPage/>}
 			{loaded &&
 			<>
-				<Header/>
+				<Header
+					admin={admin}
+				/>
 				<Choice 
 					subjectId={params.id}	
 				/>
