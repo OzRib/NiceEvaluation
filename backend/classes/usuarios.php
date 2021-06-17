@@ -58,8 +58,13 @@ class Usuario{
 		}
 	}
 
-	public function gerarProva(Pedido $pedido){
-		
+	public function gerarProva(array $pedido){
+		$this->pedido = new Pedido($pedido);
+		$pedido = $this->fazPedido();
+
+		$result = ['prova'=>base64_encode($pedido)];
+
+		return $result;
 	}
 	
 	public function redefinirSenha(string $email){
@@ -87,7 +92,30 @@ class Usuario{
 	}
 
 	private function fazPedido(){
-		
+		$pedido =  $this->pedido;
+		$qtdQuestoes = (int) $pedido->questoesGerais;
+		$materia = $pedido->materia;
+
+		$materia->carregaQuestoes('todas');
+
+		$search = ['"'];
+		$replace = ['\"'];
+		$questions = $materia->sorteiaQuestoes($qtdQuestoes);
+		$questionsJson = json_encode($questions);
+		$filteredQuestionsJson = str_replace($search, $replace, $questionsJson);
+
+		$rubyApp = __DIR__.'/../templates/main.rb';
+		$rubyArgs = '-t default -q "'.$filteredQuestionsJson.'"';
+
+		$html = shell_exec('ruby "'.$rubyApp.'" '.$rubyArgs);
+
+		$dompdf = new Dompdf();
+		$dompdf->loadHtml($html);
+		$dompdf->setPaper('A4', 'portrait');
+		$dompdf->render();
+		$result = $dompdf->output();
+
+		return $result;
 	}
 
 	private function confirmaCodigo(string $codigo):bool{
