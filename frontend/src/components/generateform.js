@@ -29,6 +29,32 @@ export default function GenerateForm({subjectId}){
 		}
 
 		const resp = await sendToGenerate(data, subjectId)
+
+		console.log(resp)
+
+		function base64ToUint8Array(str){
+			const byteStr = atob(str)
+
+			const byteNumbers = new Array(byteStr.length)
+			for(let x=0; x<byteStr.length; x++){
+				byteNumbers[x] = byteStr.charCodeAt(x)
+			}
+
+			const byteArray = new Uint8Array(byteNumbers)
+
+			return byteArray
+		}
+
+		const pdfUint8Array = base64ToUint8Array(resp.prova)
+
+		const pdf = new Blob([pdfUint8Array], {
+			type:'application/pdf'
+		})
+
+		const link = document.createElement('a')
+		link.href = window.URL.createObjectURL(pdf)
+		link.download = 'prova.pdf'
+		link.click()
 	}
 
 	async function loadData(){
