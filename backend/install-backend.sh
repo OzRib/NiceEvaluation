@@ -57,6 +57,27 @@ reinstall-utilities(){
 	install-utilities
 }
 
+install-templates(){
+	echo 'Installing templates...'
+
+	Dirs=templates/*
+
+	sudo mkdir /srv/templates
+	sudo mkdir /srv/templates/classes
+	sudo mkdir /srv/templates/components
+
+	sudo ln -f templates/*.* /srv/templates
+	sudo ln -f templates/classes/* /srv/templates/classes
+	sudo ln -f templates/components/* /srv/templates/components
+}
+
+reinstall-templates(){
+	echo 'Removing templates...'
+
+	sudo rm -rf /srv/templates
+	install-templates
+}
+
 install-workflow(){
 	echo 'Installing workflow...'
 
@@ -77,6 +98,7 @@ install(){
 	install-dependencies
 	install-classes
 	install-utilities
+	install-templates
 	install-workflow
 }
 
@@ -87,6 +109,7 @@ reinstall(){
 	reinstall-dependencies
 	reinstall-classes
 	reinstall-utilities
+	reinstall-templates
 	reinstall-workflow
 }
 
