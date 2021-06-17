@@ -25,13 +25,6 @@ export default function Header(){
                             Sair
                         </Dropdown.Item>
                     </DropdownButton>
-                    <Image 
-                        src="https://avatars.githubusercontent.com/u/73843439?s=48&v=4" 
-                        height="40rem" 
-                        width="40rem"
-                        roundedCircle
-                        className="mh2p"
-                    />
                 </div>
             </div>
         </div>
