@@ -22,17 +22,37 @@
         </div>
       <h4/>
       <h5>
-        <br>
         <b>Aluno:</b>
         <span class="underline">
-          <% 92.times do%>
+          <% 86.times do%>
             &nbsp;
           <%end%>
         </span>
         <br>
         <b>Professor(a):</b>
         <span class="underline">
-          <% 87.times do%>
+          <% 81.times do%>
+            &nbsp;
+          <%end%>
+        </span>
+        <br>
+        <b>Matrícula:</b>
+        <span class="underline">
+          <% 20.times do%>
+            &nbsp;
+          <%end%>
+        </span>&nbsp;
+        <b>Data:</b>
+        <%for line in [2,2,4]%>
+          <span class="underline">
+            <% line.times do%>
+              &nbsp;
+            <%end%>
+          </span>/
+        <%end%>&nbsp;
+        <b>Nº:</b>
+        <span class="underline">
+          <% 2.times do%>
             &nbsp;
           <%end%>
         </span>
@@ -58,11 +78,11 @@
             items = question['itens']
           %>
             <p>
-              <%for itemNumber in 0..items.length
+              <%for itemNumber in 0..items.length-1
                 item = items[itemNumber]
                 character = (itemNumber+97).chr
               %>
-                <%= character%>) <%= item%>
+                <%= character%>) <%= item%><br>
               <%end%>
             </p>
             <br>
