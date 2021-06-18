@@ -13,7 +13,7 @@ try{
 	if(!($_SESSION['usuario'] instanceof Administrador))
 		throw new Exception('Usuário não é administrador');
 	
-	if(empty($_POST['materia']))
+	if($_POST['materia'] === null)
 		throw new Exception('É necessário uma matéria');
 
 	$postRequires = ['corpo'=>'Corpo', 'resposta'=>'Resposta'];
