@@ -19,16 +19,12 @@ checkDirs(){
 
 checkTemplates(){
 	projectContent=$(
-		cat templates/*.* && 
-		cat templates/classes/* && 
-		cat templates/components/* || 
+		cat templates/**/*.* || 
 		echo 'Error in project'
 	)
 
 	serverContent=$(
-		cat /srv/templates/*.* && 
-		cat /srv/templates/classes/* &&
-		cat /srv/templates/components/* || 
+		cat /srv/templates/**/*.* || 
 		echo 'Error in server'
 	)
 
