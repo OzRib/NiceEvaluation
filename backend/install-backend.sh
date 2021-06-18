@@ -60,15 +60,12 @@ reinstall-utilities(){
 install-templates(){
 	echo 'Installing templates...'
 
-	Dirs=templates/*
-
-	sudo mkdir /srv/templates
-	sudo mkdir /srv/templates/classes
-	sudo mkdir /srv/templates/components
-
-	sudo ln -f templates/*.* /srv/templates
-	sudo ln -f templates/classes/* /srv/templates/classes
-	sudo ln -f templates/components/* /srv/templates/components
+	for dir in templates templates/**/
+	do
+		echo $dir
+		sudo mkdir /srv/$dir
+		sudo ln -f $dir/*.* /srv/$dir/
+	done
 }
 
 reinstall-templates(){
