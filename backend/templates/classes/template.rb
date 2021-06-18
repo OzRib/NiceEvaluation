@@ -9,7 +9,7 @@ class Template
     @@initialized = true
   end
 
-  def initialize(theme, questions)
+  def initialize(name, theme, questions)
     begin
       unless @@initialized
         self.initVars()
@@ -21,6 +21,7 @@ class Template
     @questions = questions
     @theme = self.getTheme(theme)
     self.loadRender()
+    @subjectName = name
   end
 
   def getThemes

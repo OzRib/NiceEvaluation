@@ -7,6 +7,9 @@ RULES = {
   },
   '-q'=> ->(questions) {
     $questions = JSON.parse(questions)
+  },
+  '-n'=> ->(name) {
+    $name = name
   }
 }
 
@@ -21,6 +24,9 @@ end
 
 THEME = $theme
 QUESTIONS = $questions
+SUBJECTNAME = $name
+
+template = Template.new(SUBJECTNAME, THEME, QUESTIONS)
 
 template = Template.new(THEME, QUESTIONS)
 

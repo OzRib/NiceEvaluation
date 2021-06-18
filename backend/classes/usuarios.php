@@ -95,6 +95,7 @@ class Usuario{
 		$pedido =  $this->pedido;
 		$qtdQuestoes = (int) $pedido->questoesGerais;
 		$materia = $pedido->materia;
+		$materiaNome = $materia->mostraNome();
 
 		$materia->carregaQuestoes('todas');
 
@@ -105,7 +106,8 @@ class Usuario{
 		$filteredQuestionsJson = str_replace($search, $replace, $questionsJson);
 
 		$rubyApp = __DIR__.'/../templates/main.rb';
-		$rubyArgs = '-t default -q "'.$filteredQuestionsJson.'"';
+		$rubyArgs = '-t default -q "'.$filteredQuestionsJson.'" -n "'.$materiaNome.'"';
+
 
 		$html = shell_exec('ruby "'.$rubyApp.'" '.$rubyArgs);
 
