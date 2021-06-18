@@ -28,8 +28,7 @@ try{
 		$_SESSION['usuario'] = $user;
 		$_SESSION['admin'] = $isUserAdmin;
 
-		//The cookie expires in 1.5 hour
-		setCookie('logged', true, time()+5400);
+		setCookie('logged', true);
 	}
 
 	$resp['access'] = 'granted';
