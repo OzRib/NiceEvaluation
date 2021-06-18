@@ -12,13 +12,7 @@ export default async function addQuestion(form, items=[], id=''){
 	data += 'materia='+id+'&'
 	
 	if(items.length>0){
-		const jsonItems = {}
-		items.forEach((obj, key)=>{
-			let item = String.fromCharCode(key+97)
-			jsonItems[item] = obj
-		})
-
-		data+= 'itens='+JSON.stringify(jsonItems)
+		data+= 'itens='+JSON.stringify(items)
 	}
 
 	console.log(data)
