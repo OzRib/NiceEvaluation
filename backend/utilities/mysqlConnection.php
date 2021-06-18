@@ -300,6 +300,7 @@ function countQuestionsInSubjectWithoutTheme(string $subjectName):int{
 	$req = mysqlQuery('SELECT COUNT(idQuestao) AS questoes 
 		FROM Questao LEFT JOIN Questao_has_Tema ON 1=1 
 		WHERE Questao_idQuestao!=idQuestao 
+		OR Questao_idQuestao IS NULL
 		AND Materia_nome="'.$subjectName.'";');
 	$resp = $req->fetch_assoc();
 	$withoutTheme = (int) $resp['questoes'];
