@@ -29,11 +29,14 @@ export default function Question({questao, position}){
 			<h5>{corpo}</h5>
 			{itens ? 
 			<p>
-				{Object.keys(itens).map(key =>(
-				<>
-					{key}) {itens[key]}<br/>
-				</>
-				))}
+				{itens.map((body, key) =>{
+					const item = String.fromCharCode(key+97)
+					return (
+						<>
+							{item}) {body}<br/>
+						</>
+					)}
+				)}
 			</p>:null}
 			<b>Resposta:</b>
 			<p>
