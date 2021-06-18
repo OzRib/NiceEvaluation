@@ -26,7 +26,16 @@ try{
 	$subjectData = $subjects[$subjectId];
 	$subjectName = $subjectData['nome'];
 
-	$themes = (array) json_decode($_POST['temas']);
+	$themes = json_decode($_POST['temas']);
+
+	if(gettype($themes) === 'object'){
+		$themes = (array) $themes;
+		foreach($themes as $key=>$value){
+			$themes[$key] = (int) $value;
+		}
+	}else{
+		$themes = null;	
+	}
 	$generalQuestions = (int) $_POST['geral'];
 
 	$subject = new Materia($subjectName);
@@ -34,7 +43,7 @@ try{
 	$pedido = [
 		'materia'=>$subject,
 		'questoesGerais'=>$generalQuestions,
-		'temas'=>$themes ? $themes : []
+		'temas'=>$themes? $themes : []
 	];
 
 	$user = $_SESSION['usuario'];
