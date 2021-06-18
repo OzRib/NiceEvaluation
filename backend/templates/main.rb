@@ -28,6 +28,9 @@ SUBJECTNAME = $name
 
 template = Template.new(SUBJECTNAME, THEME, QUESTIONS)
 
-template = Template.new(THEME, QUESTIONS)
+response = {
+  'prova'=>template.renderProva(),
+  'gabarito'=>template.renderGabarito()
+}
 
-puts template.render() 
+puts JSON.generate(response)

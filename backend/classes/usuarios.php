@@ -62,9 +62,7 @@ class Usuario{
 		$this->pedido = new Pedido($pedido);
 		$pedido = $this->fazPedido();
 
-		$result = ['prova'=>base64_encode($pedido)];
-
-		return $result;
+		return $pedido;
 	}
 	
 	public function redefinirSenha(string $email){
@@ -108,14 +106,27 @@ class Usuario{
 		$rubyApp = __DIR__.'/../templates/main.rb';
 		$rubyArgs = '-t default -q "'.$filteredQuestionsJson.'" -n "'.$materiaNome.'"';
 
+		$jsonHtmls = json_decode(shell_exec('ruby "'.$rubyApp.'" '.$rubyArgs));
 
-		$html = shell_exec('ruby "'.$rubyApp.'" '.$rubyArgs);
+		$provaHtml = $jsonHtmls->prova;
+		$gabaritoHtml = $jsonHtmls->gabarito;
 
 		$dompdf = new Dompdf();
-		$dompdf->loadHtml($html);
+		$dompdf->loadHtml($provaHtml);
 		$dompdf->setPaper('A4', 'portrait');
 		$dompdf->render();
-		$result = $dompdf->output();
+		$provaPdf = $dompdf->output();
+
+		$dompdf = new Dompdf();
+		$dompdf->loadHtml($gabaritoHtml);
+		$dompdf->setPaper('A4', 'portrait');
+		$dompdf->render();
+		$gabaritoPdf = $dompdf->output();
+
+		$result = [
+			'prova'=>base64_encode($provaPdf),
+			'gabarito'=>base64_encode($gabaritoPdf)
+		];
 
 		return $result;
 	}

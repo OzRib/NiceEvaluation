@@ -1,0 +1,24 @@
+<%
+  style = File.read("#{BASEDIR}/style.css")
+%>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gabarito de Questões</title>
+    <style>
+      <%= style%>
+    </style>
+  </head>
+  <body>
+    <header>
+      <h4 class="text-center">
+        <b>Instituto Tecnológico Educacional Soul Academy -
+          <span>
+            <%= @subjectName%>
+          </span>
+        </b>
+      </h4>
+    </header> 
+  </body>
+</html>

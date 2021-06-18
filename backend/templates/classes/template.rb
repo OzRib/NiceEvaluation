@@ -20,14 +20,14 @@ class Template
     
     @questions = questions
     @theme = self.getTheme(theme)
-    self.loadRender()
     @subjectName = name
+    self.loadRenders()
   end
 
   def getThemes
-    archives = Dir["#{CLASSESDIR}/../*.erb"]
+    archives = Dir["#{BASEDIR}/prova/*.erb"]
     names = archives.map do |archive|
-      archive.gsub("#{CLASSESDIR}/../", '').gsub('.erb', '')
+      archive.gsub("#{BASEDIR}/prova/", '').gsub('.erb', '')
     end
     themes = {}
 
@@ -37,7 +37,8 @@ class Template
 
       themes[name] = {
         'name'=>name,
-        'archive'=>archive
+        'prova'=>archive,
+        'gabarito'=>"#{BASEDIR}/gabarito/#{name}.erb"
       }
     end
 
@@ -57,8 +58,11 @@ class Template
     end
   end
 
-  def loadRender
-    erb = ERB.new(File.read(@theme['archive']))
-    erb.def_method(Template, 'render()')
+  def loadRenders
+    erbProva = ERB.new(File.read(@theme['prova']))
+    erbProva.def_method(Template, 'renderProva()')
+
+    erbGabarito = ERB.new(File.read(@theme['gabarito']))
+    erbGabarito.def_method(Template, 'renderGabarito()')
   end
 end
