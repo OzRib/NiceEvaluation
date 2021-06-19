@@ -21,6 +21,9 @@ import ListThemeBadges from './listthemebadges';
 import GenerateForm from './generateform';
 import ListGenerateThemes from './listgeneratethemes';
 import GenerateTheme from './generatetheme';
+import GenerateOptions from './generateoptions';
+import Options from './options';
+import LoadingEvaluation from './loadingevaluation';
 
 export { 
 	IconLogo, 
@@ -45,5 +48,8 @@ export {
 	ListThemeBadges,
 	GenerateForm,
 	ListGenerateThemes,
-	GenerateTheme
+	GenerateTheme,
+	GenerateOptions,
+	Options,
+	LoadingEvaluation
 }
