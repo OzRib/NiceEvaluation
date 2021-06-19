@@ -16,9 +16,17 @@
         <b>Instituto Tecnológico Educacional Soul Academy -
           <span>
             <%= @subjectName%>
-          </span>
+          </span><br>
+          Gabarito
         </b>
       </h4>
-    </header> 
+    </header>
+    <%for questionPosition in 0..@questions.length-1
+        question = @questions[questionPosition]
+        questionNumber = questionPosition+1
+        response = question['resposta']
+        %>
+          <b>Questão <%=questionNumber%>: <%=response%></b><br>
+    <%end%>
   </body>
 </html>
