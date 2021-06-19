@@ -71,7 +71,7 @@
           body = question['corpo']
           %>
             <p class="text-bold">
-              <%= questionNumber%>)<%= body%>
+              <%= questionNumber%>)<%= body.gsub("\n", '<br>')%>
             </p>
           <%
           if question['itens'].class == Array
