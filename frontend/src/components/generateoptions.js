@@ -2,6 +2,8 @@ import React from 'react';
 import { Modal, Button, ProgressBar } from 'react-bootstrap';
 import { Options, LoadingEvaluation } from './';
 import { sendToGenerate } from '../communication';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 export default class GenerateOptions extends React.Component{
 	initialState = {
@@ -116,7 +118,8 @@ export default class GenerateOptions extends React.Component{
 					this.handleClick()
 				}}
 			>
-				Gerar Prova
+				Gerar Prova{' '}
+				<FontAwesomeIcon icon={faCog}/>
 			</Button>
 			<Modal 
 				show={show}
