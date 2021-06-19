@@ -37,6 +37,7 @@ export default class AddQuestion extends React.Component{
 			<Modal 
 				show={show} 
 				onHide={()=>{this.handleClose()}}
+				size="lg"
 			>
 				<Modal.Header closeButton>
 					<Modal.Title>
