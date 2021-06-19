@@ -97,14 +97,12 @@ class Usuario{
 
 		$materia->carregaQuestoes('todas');
 
-		$search = ['"'];
-		$replace = ['\"'];
 		$questions = $materia->sorteiaQuestoes($qtdQuestoes);
 		$questionsJson = json_encode($questions);
-		$filteredQuestionsJson = str_replace($search, $replace, $questionsJson);
+		$filteredQuestionsJson = escapeshellarg($questionsJson);
 
 		$rubyApp = __DIR__.'/../templates/main.rb';
-		$rubyArgs = '-t default -q "'.$filteredQuestionsJson.'" -n "'.$materiaNome.'"';
+		$rubyArgs = '-t default -q '.$filteredQuestionsJson.' -n "'.$materiaNome.'"';
 
 		$jsonHtmls = json_decode(shell_exec('ruby "'.$rubyApp.'" '.$rubyArgs));
 
