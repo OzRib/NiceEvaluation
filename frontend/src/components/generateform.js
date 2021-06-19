@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListGenerateThemes, GenerateTheme } from './';
+import { ListGenerateThemes, GenerateTheme, GenerateOptions } from './';
 import { Form, Button } from 'react-bootstrap';
 import { getThemes, getThemesExtra, sendToGenerate } from '../communication';
 
@@ -106,9 +106,9 @@ export default function GenerateForm({subjectId}){
 			<div
 				className="flexColumn JCFlexEnd AIFlexEnd"
 			>
-				<Button type="submit">
-					Gerar Prova
-				</Button>
+				<GenerateOptions
+					temas={temas}
+				/>
 			</div>
 		</Form>
 	</div>
