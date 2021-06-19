@@ -6,13 +6,13 @@ export default async function addQuestion(form, items=[], id=''){
 
 	let data = '';
 	for(let x in questao){
-		data+= x+'='+questao[x]+'&'
+		data+= x+'='+encodeURIComponent(questao[x])+'&'
 	}
 	
 	data += 'materia='+id+'&'
 	
 	if(items.length>0){
-		data+= 'itens='+JSON.stringify(items)
+		data+= 'itens='+encodeURIComponent(JSON.stringify(items))
 	}
 
 	console.log(data)
