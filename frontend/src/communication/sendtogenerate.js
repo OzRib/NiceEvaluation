@@ -13,6 +13,8 @@ export default async function sendToGenerate(subjectId, data, downloadCallback){
 
 			const resp = req.response
 			if(resp){
+				downloadCallback['computable'] = true
+				downloadCallback['percent'] = 100
 				resolve(resp)
 			}else{
 				reject('Sem resposta')
