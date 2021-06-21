@@ -3,7 +3,7 @@ import { ProgressBar } from 'react-bootstrap';
 export default function LoadingEvaluation({configs, loaded}){
 	const { computable, percent } = configs
 	const now = computable? percent: 100
-	const label = computable? `${percent}%`: undefined
+	const label = computable? `${percent}%`: null
 
 	return(
 	<div className="w100p">
