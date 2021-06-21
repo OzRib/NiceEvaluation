@@ -25,7 +25,7 @@ export default function TeacherPage(){
 		}
 
 		const resp = await checkLogin()
-		const action = await userControl(resp)
+		const action = userControl(resp)
 		if(actions[action.action] !== undefined)
 			return actions[action.action]()
 	}
