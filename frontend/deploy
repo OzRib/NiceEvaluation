@@ -6,7 +6,7 @@ echo "Sending archives to /srv/http..."
 cd build
 for file in *
 do
-	sudo cp -rf $file /srv/http
+	cp -rf $file /srv/http
 done
 cd ..
 echo "Sended"

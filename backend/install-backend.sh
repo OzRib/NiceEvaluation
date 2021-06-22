@@ -4,13 +4,13 @@ install-dependencies(){
 	echo 'Installing dependencies...'
 
 	#vendor
-	sudo cp -rf vendor /srv/vendor
+	cp -rf vendor /srv/vendor
 
 	#env
-	sudo cp -rf env /srv/env
+	cp -rf env /srv/env
 
 	#composer 
-	sudo cp -rf composer.* /srv
+	cp -rf composer.* /srv
 }
 
 reinstall-dependencies(){
@@ -21,7 +21,7 @@ reinstall-dependencies(){
 
 	for file in $toRemove
 	do
-		sudo rm -rf $baseDir/$file
+		rm -rf $baseDir/$file
 	done
 
 	install-dependencies
@@ -30,14 +30,14 @@ reinstall-dependencies(){
 install-classes(){
 	echo 'Installing classes...'
 
-	sudo mkdir /srv/classes
-	sudo ln -f classes/* /srv/classes
+	mkdir /srv/classes
+	ln -f classes/* /srv/classes
 }
 
 reinstall-classes(){
 	echo 'Removing classes...'
 
-	sudo rm -rf /srv/classes
+	rm -rf /srv/classes
 
 	install-classes
 }
@@ -45,14 +45,14 @@ reinstall-classes(){
 install-utilities(){
 	echo 'Installing utilities...'
 
-	sudo mkdir /srv/utilities
-	sudo ln -f utilities/* /srv/utilities
+	mkdir /srv/utilities
+	ln -f utilities/* /srv/utilities
 }
 
 reinstall-utilities(){
 	echo 'Removing utilities...'
 
-	sudo rm -rf /srv/utilities
+	rm -rf /srv/utilities
 
 	install-utilities
 }
@@ -63,28 +63,28 @@ install-templates(){
 	for dir in templates templates/**/
 	do
 		echo $dir
-		sudo mkdir /srv/$dir
-		sudo ln -f $dir/*.* /srv/$dir/
+		mkdir /srv/$dir
+		ln -f $dir/*.* /srv/$dir/
 	done
 }
 
 reinstall-templates(){
 	echo 'Removing templates...'
 
-	sudo rm -rf /srv/templates
+	rm -rf /srv/templates
 	install-templates
 }
 
 install-workflow(){
 	echo 'Installing workflow...'
 
-	sudo ln -f workflow/* /srv/http
+	ln -f workflow/* /srv/http
 }
 
 reinstall-workflow(){
 	echo 'Removing workflow...'
 
-	sudo rm -rf /srv/http/*.php
+	rm -rf /srv/http/*.php
 	
 	install-workflow
 }
