@@ -37,8 +37,8 @@ export default class ListThemes extends React.Component{
 
 		console.log('Extra', resp)
 
-		if(resp instanceof Object){
-			setExtra(resp)
+		if(resp.error===undefined){
+			this.setState({extra:resp})
 			return true
 		}else{
 			return false
