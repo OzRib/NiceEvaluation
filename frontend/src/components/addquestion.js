@@ -17,6 +17,8 @@ export default class AddQuestion extends React.Component{
 	}
 
 	handleClose(){
+		if(this.props.onClose)
+			this.props.onClose()
 		this.setState({show:false})
 	}
 
