@@ -9,6 +9,9 @@ export default class AddQuestionForm extends React.Component{
 		super(props)
 		this.state = {
 			showItems: false,
+			showError: false,
+			error: null,
+			showSuccess: false,
 			items: []
 		}
 	}
@@ -39,6 +42,42 @@ export default class AddQuestionForm extends React.Component{
 		const resp = await addQuestion(form, items, id)
 		
 		console.log(resp)
+
+		if(resp.added === true){
+			this.setState({
+				showSuccess: true
+			})
+
+			const formInputs = {
+				corpo: form.corpo,
+				resposta: form.resposta,
+				item: form.item
+			}
+
+			for(let x in formInputs){
+				const input = formInputs[x]
+				input.value = ''
+			}
+
+			this.setState({items: []})
+
+			setTimeout(()=>{
+				this.setState({
+					showSuccess:false
+				})
+			}, 3000)
+		}else{
+			this.setState({
+				showError: true,
+				error: resp.error
+			})
+
+			setTimeout(()=>{
+				this.setState({
+					showError:false
+				})
+			}, 3000)
+		}
 	}
 	
 	handleShowItems(){
