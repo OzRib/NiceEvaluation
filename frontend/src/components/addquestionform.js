@@ -2,7 +2,7 @@ import React from 'react';
 import { addQuestion } from '../communication';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faShare } from '@fortawesome/free-solid-svg-icons';
-import { Form, Button, InputGroup } from 'react-bootstrap';
+import { Form, Button, InputGroup, Alert } from 'react-bootstrap';
 
 export default class AddQuestionForm extends React.Component{
 	constructor(props){
@@ -86,7 +86,7 @@ export default class AddQuestionForm extends React.Component{
 	}
 
 	render(){
-		const { showItems, items } = this.state
+		const { showItems, items, showError, error, showSuccess } = this.state
 
 		function letter(number){
 			const letter = String.fromCharCode(number+97)
@@ -175,6 +175,26 @@ export default class AddQuestionForm extends React.Component{
 					Enviar{' '}
 					<FontAwesomeIcon icon={faShare}/>
 				</Button>
+			</div>
+			<div className="w100p flexColumn AICenter">
+				<Alert 
+					className="w50p" 
+					variant="success" 
+					show={showSuccess}
+				>
+					<center>
+						Questão adicionada com sucesso
+					</center>
+				</Alert>
+				<Alert
+					className="w50p"
+					variant="danger"
+					show={showError}
+				>
+					<center>
+						{error}
+					</center>
+				</Alert>
 			</div>
 		</Form>
 		)
