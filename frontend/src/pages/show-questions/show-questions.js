@@ -7,6 +7,7 @@ export default function ShowQuestions({match:{params}}){
 	const [loaded, setLoaded] = React.useState(false)
 	const [admin, setAdmin] = React.useState(false)
 	const [showAdd, setShowAdd] = React.useState(false)
+	const reload = new Event('reload')
 
 	async function onLoad(){
 		const actions = {
@@ -52,6 +53,9 @@ export default function ShowQuestions({match:{params}}){
 			<ContentBox className="flexColumn AICenter">
 				<AddQuestion
 					subjectId={params.id}
+					onClose={async ()=>{
+						document.dispatchEvent(reload)
+					}}
 				/>
 			</ContentBox>}
 			<ListThemes
