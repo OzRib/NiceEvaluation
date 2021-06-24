@@ -55,6 +55,7 @@ export default function GenerateForm({subjectId}){
 			>
 				<GenerateOptions
 					temas={temas}
+					subjectId={subjectId}
 				/>
 			</div>
 		</Form>
