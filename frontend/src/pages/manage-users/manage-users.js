@@ -2,10 +2,8 @@ import React from 'react';
 import './manage-users.css';
 import { checkLogin, userControl } from '../../communication';
 import { ContentBox, ListUsers, Header, AddUser, SuccessAlert } from '../../components';
-import { LoadingPage } from '../';
 
-export default function ManageUsers(){
-    const [loaded, setLoaded] = React.useState(false)
+export default function ManageUsers({admin}){
     const [showMessage, setShowMessage] = React.useState(false)
     const [listUsers, setListUsers] = React.useState(true)
     const [message, setMessage] = React.useState(null)
@@ -51,36 +49,29 @@ export default function ManageUsers(){
     }, [])
     
     return(
-        <div id="manage-users" className="flexColumn fullscreen">
-	    {!loaded && <LoadingPage/>}
-	    {loaded && 
-	    <>
-		<Header
-		    admin={true}
-		/>
-		<ContentBox className="flexColumn AICenter">
-		    <AddUser onSuccess={
-			message => {
-			    success(message)
-			}
-		    }/>
-		</ContentBox>
-		<ContentBox className="flexColumn AICenter">
-		    <h6>Usuários:</h6>
-		    {listUsers && <ListUsers 
-		    	onSuccess={
-			    message => {
-				success(message)
-			    }	
-		    	}
-		    />}
-		</ContentBox>
-		<SuccessAlert
-		    show={showMessage}
-		>
-		    {message}
-		</SuccessAlert>
-	    </>}            
-       </div>
+      <>
+	<ContentBox className="flexColumn AICenter">
+	  <AddUser onSuccess={
+	    message => {
+	      success(message)
+	    }
+	  }/>
+	</ContentBox>
+	<ContentBox className="flexColumn AICenter">
+	  <h6>Usuários:</h6>
+	    {listUsers && <ListUsers 
+	      onSuccess={
+		message => {
+		  success(message)
+		}	
+	      }
+    	  />}
+	</ContentBox>
+	<SuccessAlert
+	  show={showMessage}
+	>
+	  {message}
+	</SuccessAlert>
+      </>
     )
 }
