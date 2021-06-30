@@ -9,13 +9,7 @@ export default function TeacherPage(){
 	const [admin, setAdmin] = React.useState(false)
 
 	return(
-		<div id="teacher-page" className="flexColumn fullscreen">
-		{!loaded && <LoadingPage/>}
-		{loaded &&
-		<>
-			<Header
-				admin={admin}
-			/>
+		<React.Fragment>
 			<ContentBox className="flexColumn">
 				<Search
 					name="pesquisa"
@@ -25,7 +19,6 @@ export default function TeacherPage(){
 				<h6>Matérias: </h6>
 				<ListSubjects/>
 			</ContentBox>
-		</>}
-		</div>
+		</React.Fragment>
 	)	
 }
