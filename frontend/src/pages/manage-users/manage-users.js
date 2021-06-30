@@ -26,28 +26,6 @@ export default function ManageUsers({admin}){
 	}, 3000)
     }
 
-    async function onLoad(){
-        const actions = {
-            'user': function(){
-                window.location.href = '/#/teacher-page'
-            },
-            'error': function(){
-                window.location.href = '/#/'
-            }
-        }
-
-        const resp = await checkLogin()
-        const action = userControl(resp)
-        if(actions[action.action] !== undefined)
-            actions[action.action]()
-	else
-	    setLoaded(true)
-    }
-
-    React.useEffect(async ()=>{
-	await onLoad()
-    }, [])
-    
     return(
       <>
 	<ContentBox className="flexColumn AICenter">
