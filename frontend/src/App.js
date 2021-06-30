@@ -2,16 +2,6 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, HashRouter } from 'react-router-dom';
-import { 
-	Login, 
-	AdminChoice, 
-	ManageUsers, 
-	TeacherPage, 
-	Subject,
-	Generate,
-	ShowQuestions,
-	Theme
-} from './pages';
 import { Login, AdminChoice } from './pages';
 import { LoggedRoutes } from './routes';
 
