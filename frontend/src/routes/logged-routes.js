@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { Header } from '../components';
-import AdminRoutes from './admin-routes';
+import { AdminRoutes, PrivilegedRoutes } from './';
 import { checkLogin, userControl } from '../communication';
 import {
 	ManageUsers,
@@ -58,10 +58,10 @@ export default function LoggedRoutes(){
 		<React.Fragment>
 			<Header admin={admin}/>
 			<AdminRoutes admin={admin}/>
+			<PrivilegedRoutes admin={admin}/>
 			<Route exact path='/home/teacher-page' component={TeacherPage}/>
 			<Route exact path='/home/subject/:id' component={Subject}/>
 			<Route exact path='/home/subject/:id/generate' component={Generate}/>
-			<Route exact path='/home/subject/:id/show-questions' component={ShowQuestions}/>
 			<Route exact path='/home/subject/:subjId/theme/:theme' component={Theme}/>
 		</React.Fragment>}
 	</div>
