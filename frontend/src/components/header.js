@@ -26,11 +26,11 @@ export default function Header({admin}){
                         <Dropdown.Item onClick={()=>{handleClick()}}>
                             Sair
                         </Dropdown.Item>
-	    		<Dropdown.Item as="a" href='/#/teacher-page'>
+			<Dropdown.Item as="a" href='/#/home/teacher-page'>
 	    		    Página dos Professores
 			</Dropdown.Item>
 	    		{admin===true &&
-	    		<Dropdown.Item as="a" href="/#/manage-users">
+			<Dropdown.Item as="a" href="/#/home/manage-users">
 	    		    Gerenciar usuários
 	    		</Dropdown.Item>}
                     </DropdownButton>
