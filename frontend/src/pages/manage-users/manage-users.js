@@ -27,7 +27,7 @@ export default function ManageUsers({admin}){
     }
 
     return(
-      <>
+      <React.Fragment>
 	<ContentBox className="flexColumn AICenter">
 	  <AddUser onSuccess={
 	    message => {
@@ -50,6 +50,6 @@ export default function ManageUsers({admin}){
 	>
 	  {message}
 	</SuccessAlert>
-      </>
+      </React.Fragment>
     )
 }
