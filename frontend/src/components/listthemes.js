@@ -70,16 +70,16 @@ export default class ListThemes extends React.Component{
 		>
 			{!loaded && <Spinner animation="border" variant="danger"/>}
 			{loaded && 
-			<>
+			<React.Fragment>
 				<Theme
 					questions={extra.todas}
-					href={'/#/subject/'+subjectId+'/theme/all'}
+					href={'/#/home/subject/'+subjectId+'/theme/all'}
 				>
 					Todas as questões
 				</Theme>
 				<Theme 
 					questions={extra.semTema}
-					href={'/#/subject/'+subjectId+'/theme/no-theme'}
+					href={'/#/home/subject/'+subjectId+'/theme/no-theme'}
 				>
 					
 					Questões sem temas
@@ -88,12 +88,12 @@ export default class ListThemes extends React.Component{
 					<Theme 
 						questions={obj.questoes} 
 						key={key}
-						href={'/#/subject/'+subjectId+'/theme/'+obj.id}
+						href={'/#/home/subject/'+subjectId+'/theme/'+obj.id}
 					>
 						{obj.nome}
 					</Theme>
 				))}
-			</>}
+			</React.Fragment>}
 		</ContentBox>
 		)
 	}
