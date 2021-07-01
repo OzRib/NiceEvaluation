@@ -6,15 +6,9 @@ import { checkLogin, userControl } from '../../communication';
 export default function ShowQuestions({match:{params}, admin}){
 	const reload = new Event('reload')
 
-	return(
-		<div className="flexColumn fullscreen bgcPrimary">
-		{!loaded && <LoadingPage/>}
-		{loaded && 
-		<>
-			<Header
-				admin={admin}
-			/>
-			{showAdd &&
+	return( 
+		<React.Fragment>
+			{admin &&
 			<ContentBox className="flexColumn AICenter">
 				<AddQuestion
 					subjectId={params.id}
@@ -26,7 +20,6 @@ export default function ShowQuestions({match:{params}, admin}){
 			<ListThemes
 				subjectId={params.id}
 			/>
-		</>}
-		</div>
+		</React.Fragment>
 	)
 }
