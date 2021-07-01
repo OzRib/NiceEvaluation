@@ -6,17 +6,10 @@ import { LoadingPage} from '../';
 
 export default function Subject({match:{params}}){
 	return(
-		<div  id="subject" className="flexColumn fullscreen">
-			{!loaded && <LoadingPage/>}
-			{loaded &&
-			<>
-				<Header
-					admin={admin}
-				/>
-				<Choice 
-					subjectId={params.id}	
-				/>
-			</>}
-		</div>
+		<React.Fragment>
+			<Choice 
+				subjectId={params.id}	
+			/>
+		</React.Fragment>
 	)
 }
