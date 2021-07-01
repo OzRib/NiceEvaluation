@@ -1,16 +1,18 @@
 #!/bin/bash
 
+DIRNAME=$(dirname $0)
+
 install-dependencies(){
 	echo 'Installing dependencies...'
 
 	#vendor
-	cp -rf vendor /srv/vendor
+	cp -rf $DIRNAME/vendor /srv/vendor
 
 	#env
-	cp -rf env /srv/env
+	cp -rf $DIRNAME/env /srv/env
 
 	#composer 
-	cp -rf composer.* /srv
+	cp -rf $DIRNAME/composer.* /srv
 }
 
 reinstall-dependencies(){
@@ -31,7 +33,7 @@ install-classes(){
 	echo 'Installing classes...'
 
 	mkdir /srv/classes
-	ln -f classes/* /srv/classes
+	ln -f $DIRNAME/classes/* /srv/classes
 }
 
 reinstall-classes(){
@@ -46,7 +48,7 @@ install-utilities(){
 	echo 'Installing utilities...'
 
 	mkdir /srv/utilities
-	ln -f utilities/* /srv/utilities
+	ln -f $DIRNAME/utilities/* /srv/utilities
 }
 
 reinstall-utilities(){
@@ -60,9 +62,8 @@ reinstall-utilities(){
 install-templates(){
 	echo 'Installing templates...'
 
-	for dir in templates templates/**/
+	for dir in $DIRNAME/templates $DIRNAME/templates/**/
 	do
-		echo $dir
 		mkdir /srv/$dir
 		ln -f $dir/*.* /srv/$dir/
 	done
@@ -78,7 +79,7 @@ reinstall-templates(){
 install-workflow(){
 	echo 'Installing workflow...'
 
-	ln -f workflow/* /srv/http
+	ln -f $DIRNAME/workflow/* /srv/http
 }
 
 reinstall-workflow(){
