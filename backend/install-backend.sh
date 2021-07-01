@@ -112,7 +112,7 @@ reinstall(){
 }
 
 baseDir=/srv
-dirChecks=('env' 'vendor' 'classes' 'utilities')
+dirChecks=('env' 'vendor' 'classes' 'utilities' 'templates')
 isInstalled=false
 
 for dir in $dirChecks
