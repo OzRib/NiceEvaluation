@@ -5,9 +5,6 @@ import { LoadingPage } from '../';
 import { checkLogin, userControl } from '../../communication';
 
 export default function TeacherPage(){
-	const [loaded, setLoaded] = React.useState(false)
-	const [admin, setAdmin] = React.useState(false)
-
 	return(
 		<React.Fragment>
 			<ContentBox className="flexColumn">
