@@ -9,6 +9,7 @@ install-backend(){
 
 install-frontend(){
 	cd $DIRNAME/frontend
+	npm install
 	npm run deploy
 	cd $WORKDIR
 }
