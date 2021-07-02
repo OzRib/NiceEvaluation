@@ -17,6 +17,7 @@ docker pull ozrib/nice-evaluation:database ozrib/nice-evaluation:site
 docker run --name database\
 	-e MYSQL_ROOT_PASSWORD=$DB_ROOT_PASSWD\
        	-e MYSQL_USER=$DB_USER\
+	-e MYSQL_PASSWORD=$DB_PASSWD
 	-d ozrib/nice-evaluation:database
 
 #Installing site
