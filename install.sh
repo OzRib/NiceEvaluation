@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DIRNAME=$(dirname $0)
+
 #You need docker installed in your Linux PC
 
 #In .env file, declare: 
@@ -8,7 +10,7 @@
 	#DB_PASSWD (Database Password)
 
 #Catching the environment variables
-./.env
+source $DIRNAME/.env
 
 #Installing images
 docker pull ozrib/nice-evaluation:database ozrib/nice-evaluation:site
