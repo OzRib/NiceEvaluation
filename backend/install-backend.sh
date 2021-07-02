@@ -1,18 +1,21 @@
 #!/bin/bash
 
 DIRNAME=$(dirname $0)
+WORKDIR=$(pwd)
+
+cd $DIRNAME
 
 install-dependencies(){
 	echo 'Installing dependencies...'
 
 	#vendor
-	cp -rf $DIRNAME/vendor /srv/vendor
+	cp -rf vendor /srv/vendor
 
 	#env
-	cp -rf $DIRNAME/env /srv/env
+	cp -rf env /srv/env
 
 	#composer 
-	cp -rf $DIRNAME/composer.* /srv
+	cp -rf composer.* /srv
 }
 
 reinstall-dependencies(){
@@ -33,7 +36,7 @@ install-classes(){
 	echo 'Installing classes...'
 
 	mkdir /srv/classes
-	ln -f $DIRNAME/classes/* /srv/classes
+	ln -f classes/* /srv/classes
 }
 
 reinstall-classes(){
@@ -48,7 +51,7 @@ install-utilities(){
 	echo 'Installing utilities...'
 
 	mkdir /srv/utilities
-	ln -f $DIRNAME/utilities/* /srv/utilities
+	ln -f utilities/* /srv/utilities
 }
 
 reinstall-utilities(){
@@ -62,7 +65,7 @@ reinstall-utilities(){
 install-templates(){
 	echo 'Installing templates...'
 
-	for dir in $DIRNAME/templates $DIRNAME/templates/**/
+	for dir in templates templates/**/
 	do
 		mkdir /srv/$dir
 		ln -f $dir/*.* /srv/$dir/
@@ -79,7 +82,7 @@ reinstall-templates(){
 install-workflow(){
 	echo 'Installing workflow...'
 
-	ln -f $DIRNAME/workflow/* /srv/http
+	ln -f workflow/* /srv/http
 }
 
 reinstall-workflow(){
@@ -130,3 +133,5 @@ then
 else
 	install
 fi
+
+cd $WORKDIR
