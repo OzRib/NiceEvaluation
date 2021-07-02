@@ -2,10 +2,8 @@ import React from 'react';
 import './manage-users.css';
 import { checkLogin, userControl } from '../../communication';
 import { ContentBox, ListUsers, Header, AddUser, SuccessAlert } from '../../components';
-import { LoadingPage } from '../';
 
-export default function ManageUsers(){
-    const [loaded, setLoaded] = React.useState(false)
+export default function ManageUsers({admin}){
     const [showMessage, setShowMessage] = React.useState(false)
     const [listUsers, setListUsers] = React.useState(true)
     const [message, setMessage] = React.useState(null)
@@ -28,59 +26,30 @@ export default function ManageUsers(){
 	}, 3000)
     }
 
-    async function onLoad(){
-        const actions = {
-            'user': function(){
-                window.location.href = '/#/teacher-page'
-            },
-            'error': function(){
-                window.location.href = '/#/'
-            }
-        }
-
-        const resp = await checkLogin()
-        const action = userControl(resp)
-        if(actions[action.action] !== undefined)
-            actions[action.action]()
-	else
-	    setLoaded(true)
-    }
-
-    React.useEffect(async ()=>{
-	await onLoad()
-    }, [])
-    
     return(
-        <div id="manage-users" className="flexColumn fullscreen">
-	    {!loaded && <LoadingPage/>}
-	    {loaded && 
-	    <>
-		<Header
-		    admin={true}
-		/>
-		<ContentBox className="flexColumn AICenter">
-		    <AddUser onSuccess={
-			message => {
-			    success(message)
-			}
-		    }/>
-		</ContentBox>
-		<ContentBox className="flexColumn AICenter">
-		    <h6>Usuários:</h6>
-		    {listUsers && <ListUsers 
-		    	onSuccess={
-			    message => {
-				success(message)
-			    }	
-		    	}
-		    />}
-		</ContentBox>
-		<SuccessAlert
-		    show={showMessage}
-		>
-		    {message}
-		</SuccessAlert>
-	    </>}            
-       </div>
+      <React.Fragment>
+	<ContentBox className="flexColumn AICenter">
+	  <AddUser onSuccess={
+	    message => {
+	      success(message)
+	    }
+	  }/>
+	</ContentBox>
+	<ContentBox className="flexColumn AICenter">
+	  <h6>Usuários:</h6>
+	    {listUsers && <ListUsers 
+	      onSuccess={
+		message => {
+		  success(message)
+		}	
+	      }
+    	  />}
+	</ContentBox>
+	<SuccessAlert
+	  show={showMessage}
+	>
+	  {message}
+	</SuccessAlert>
+      </React.Fragment>
     )
 }

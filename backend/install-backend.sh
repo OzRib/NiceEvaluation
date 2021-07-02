@@ -1,5 +1,10 @@
 #!/bin/bash
 
+DIRNAME=$(dirname $0)
+WORKDIR=$(pwd)
+
+cd $DIRNAME
+
 install-dependencies(){
 	echo 'Installing dependencies...'
 
@@ -62,7 +67,6 @@ install-templates(){
 
 	for dir in templates templates/**/
 	do
-		echo $dir
 		mkdir /srv/$dir
 		ln -f $dir/*.* /srv/$dir/
 	done
@@ -111,7 +115,7 @@ reinstall(){
 }
 
 baseDir=/srv
-dirChecks=('env' 'vendor' 'classes' 'utilities')
+dirChecks=('env' 'vendor' 'classes' 'utilities' 'templates')
 isInstalled=false
 
 for dir in $dirChecks
@@ -129,3 +133,5 @@ then
 else
 	install
 fi
+
+cd $WORKDIR

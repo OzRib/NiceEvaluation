@@ -14,7 +14,7 @@ export default function Choice({subjectId, ...props}){
 		>
 			<Button 
 				as="a"
-				href={"/#/subject/"+subjectId+"/show-questions"}
+				href={"/#/home/subject/"+subjectId+"/show-questions"}
 				variant="outline-success"
 				className="w50p"
 			>
@@ -23,7 +23,7 @@ export default function Choice({subjectId, ...props}){
 			</Button>
 			<Button
 				as="a"
-				href={"/#/subject/"+subjectId+"/generate"}
+				href={"/#/home/subject/"+subjectId+"/generate"}
 				variant="outline-success"
 				className="w50p mt5p"
 			>

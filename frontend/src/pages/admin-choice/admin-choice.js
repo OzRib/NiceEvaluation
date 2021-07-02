@@ -35,8 +35,8 @@ export default function AdminChoice(){
 	    {loaded && 
 	    <div className="flexColumn fullscreen AICenter pt7p">
                 <Image className="mediumLogo" src={logo}></Image>
-                <Button variant="success" className="choice" href="/#/manage-users">Gerenciamento de Usuários</Button>
-                <Button variant="success" className="choice" href="/#/teacher-page">Página dos Profesores</Button>
+		<Button variant="success" className="choice" href="/#/home/manage-users">Gerenciamento de Usuários</Button>
+		<Button variant="success" className="choice" href="/#/home/teacher-page">Página dos Profesores</Button>
 	    </div>}
         </div>
     )

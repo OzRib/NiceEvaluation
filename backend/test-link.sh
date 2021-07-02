@@ -1,12 +1,13 @@
 #!/bin/bash
 
 serverBaseDir=/srv
+DIRNAME=$(dirname $0)
 
 dirsToCheck=( "classes" "utilities" )
 
 checkDirs(){
 	dir=$1
-	projectContent=$(cat $dir/* || echo 'Error in project')
+	projectContent=$(cat $DIRNAME/$dir/* || echo 'Error in project')
 	serverContent=$(cat $serverBaseDir/$dir/* || echo 'Error in server')
 
 	if [ "$projectContent" = "$serverContent" ]
@@ -19,7 +20,7 @@ checkDirs(){
 
 checkTemplates(){
 	projectContent=$(
-		cat templates/**/*.* || 
+		cat $DIRNAME/templates/**/*.* || 
 		echo 'Error in project'
 	)
 
@@ -37,7 +38,7 @@ checkTemplates(){
 }
 
 checkWorkflow(){
-	projectContent=$(cat workflow/* || echo 'Error in project')
+	projectContent=$(cat $DIRNAME/workflow/* || echo 'Error in project')
 	serverContent=$(cat $serverBaseDir/http/*.php || echo 'Error in server')
 
 	if [ "$projectContent" = "$serverContent" ]

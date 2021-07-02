@@ -1,96 +1,96 @@
-<%
-  style = File.read("#{BASEDIR}/style.css")
-%>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>
-      Prova
-    </title>
-    <style type="text/css">
-      <%= style%>  
-    </style>
-  </head>
-  <body>
-    <header>
-      <h4>
-        <div class="text-center">
-          <b>
-            Instituto Tecnológico Educacional Soul Academy - <%= @subjectName%>
-          </b>
-        </div>
-      <h4/>
-      <h5>
-        <b>Aluno:</b>
-        <span class="underline">
-          <% 86.times do%>
-            &nbsp;
-          <%end%>
-        </span>
-        <br>
-        <b>Professor(a):</b>
-        <span class="underline">
-          <% 81.times do%>
-            &nbsp;
-          <%end%>
-        </span>
-        <br>
-        <b>Matrícula:</b>
-        <span class="underline">
-          <% 20.times do%>
-            &nbsp;
-          <%end%>
-        </span>&nbsp;
-        <b>Data:</b>
-        <%for line in [2,2,4]%>
+  <%
+    style = File.read("#{BASEDIR}/style.css")
+  %>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>
+        Prova
+      </title>
+      <style type="text/css">
+        <%= style%>  
+      </style>
+    </head>
+    <body>
+      <header>
+        <h4>
+          <div class="text-center">
+            <b>
+              Instituto Tecnológico Educacional Soul Academy - <%= @subjectName%>
+            </b>
+          </div>
+        <h4/>
+        <h5>
+          <b>Aluno:</b>
           <span class="underline">
-            <% line.times do%>
+            <% 86.times do%>
               &nbsp;
             <%end%>
-          </span>/
-        <%end%>&nbsp;
-        <b>Nº:</b>
-        <span class="underline">
-          <% 3.times do%>
-            &nbsp;
-          <%end%>
-        </span>
-      </h5>
-    </header>
-    <%
-      if @questions.class == Array
-        for questionPosition in 0..@questions.length-1
-          question = @questions[questionPosition]
-          questionNumber = questionPosition+1
-
-          unless question.class == Hash
-            raise 'question não é uma hash'
-          end
-
-          body = question['corpo']
-          %>
-            <p class="text-bold">
-              <%= questionNumber%>)<%= body.gsub("\n", '<br>')%>
-            </p>
-          <%
-          if question['itens'].class == Array
-            items = question['itens']
-          %>
-            <p>
-              <%for itemNumber in 0..items.length-1
-                item = items[itemNumber]
-                character = (itemNumber+97).chr
-              %>
-                <%= character%>) <%= item%><br>
+          </span>
+          <br>
+          <b>Professor(a):</b>
+          <span class="underline">
+            <% 81.times do%>
+              &nbsp;
+            <%end%>
+          </span>
+          <br>
+          <b>Matrícula:</b>
+          <span class="underline">
+            <% 20.times do%>
+              &nbsp;
+            <%end%>
+          </span>&nbsp;
+          <b>Data:</b>
+          <%for line in [2,2,4]%>
+            <span class="underline">
+              <% line.times do%>
+                &nbsp;
               <%end%>
-            </p>
-          <%
-          else
-          %>
-            <br>
-          <%
-          end
+            </span>/
+          <%end%>&nbsp;
+          <b>Nº:</b>
+          <span class="underline">
+            <% 3.times do%>
+              &nbsp;
+            <%end%>
+          </span>
+        </h5>
+      </header>
+      <%
+        if @questions.class == Array
+          for questionPosition in 0..@questions.length-1
+            question = @questions[questionPosition]
+            questionNumber = questionPosition+1
+
+            unless question.class == Hash
+              raise 'question não é uma hash'
+            end
+
+            body = question['corpo']
+            %>
+              <p class="text-bold">
+                <%= questionNumber%>)<%= body.gsub("\n", '<br>')%>
+              </p>
+            <%
+            if question['itens'].class == Array
+              items = question['itens']
+            %>
+              <p>
+                <%for itemNumber in 0..items.length-1
+                  item = items[itemNumber]
+                  character = (itemNumber+97).chr
+                %>
+                  <%= character%>) <%= item%><br>
+                <%end%>
+              </p>
+            <%
+            else
+            %>
+              <br>
+            <%
+            end
         end
       else
         raise '@questions não é um array'
