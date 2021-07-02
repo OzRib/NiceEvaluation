@@ -25,4 +25,10 @@ docker run --name database\
 	-d ozrib/nice-evaluation:database
 
 #Installing site
-docker run --name site -d ozrib/nice-evaluation:site
+docker run --name site\
+	--ip "$HOST" \
+	-e "DB_HOST=$DB_HOST" \
+	-e "DB_NAME=$DB_NAME" \
+	-e "DB_USER=$DB_USER" \
+	-e "DB_PASSWD=$DB_PASSWD" \
+	-d ozrib/nice-evaluation:site
