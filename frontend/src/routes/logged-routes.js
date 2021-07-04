@@ -4,11 +4,9 @@ import { Header } from '../components';
 import { AdminRoutes, PrivilegedRoutes } from './';
 import { checkLogin, userControl } from '../communication';
 import {
-	ManageUsers,
 	TeacherPage,
 	Subject,
 	Generate,
-	ShowQuestions,
 	Theme,
 	LoadingPage
 } from '../pages';

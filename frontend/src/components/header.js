@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Dropdown, DropdownButton, } from 'react-bootstrap';
+import { Dropdown, DropdownButton, } from 'react-bootstrap';
 import IconLogo from './iconlogo';
 import { logout } from '../communication';
 

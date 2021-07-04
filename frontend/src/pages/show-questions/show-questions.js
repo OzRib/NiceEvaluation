@@ -1,7 +1,5 @@
 import React from 'react';
-import { Header, ContentBox, AddQuestion, ListThemes } from '../../components';
-import { LoadingPage } from '../';
-import { checkLogin, userControl } from '../../communication';
+import { ContentBox, AddQuestion, ListThemes } from '../../components';
 
 export default function ShowQuestions({match:{params}, admin}){
 	const reload = new Event('reload')

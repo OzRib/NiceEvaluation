@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { Header } from '../components';
-import { LoadingPage, ManageUsers } from '../pages';
+import { ManageUsers } from '../pages';
 
 export default function AdminRoutes({admin}){
 	if(!admin)

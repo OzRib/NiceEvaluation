@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, ProgressBar } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import { Options, LoadingEvaluation } from './';
 import { sendToGenerate } from '../communication';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,7 +19,6 @@ export default class GenerateOptions extends React.Component{
 
 	constructor(props){
 		super(props)
-		const temas = props.temas
 		const initialState = this.initialState
 
 		this.state = {

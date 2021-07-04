@@ -1,8 +1,6 @@
 import React from 'react';
 import './teacher-page.css';
-import { Header, ContentBox, Search, ListSubjects } from '../../components'
-import { LoadingPage } from '../';
-import { checkLogin, userControl } from '../../communication';
+import { ContentBox, Search, ListSubjects } from '../../components';
 
 export default function TeacherPage(){
 	return(
