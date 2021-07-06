@@ -1,8 +1,7 @@
 # How to install
 The first step is configure the environment variables
 You can view an example of the environment variables in file example.env
-
-![enviroment example](https://raw.githubusercontent.com/OzRib/NiceEvaluation/master/example.env)
+[environment example](https://github.com/OzRib/NiceEvaluation/blob/master/example.env)
 
 The project server is builded to run in Linux servers.
 To install projcet in the Linux server, first install docker in your Linux distro.
