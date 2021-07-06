@@ -18,7 +18,7 @@ export default class ListGenerateThemes extends React.Component{
 	}
 
 	updateQuestions(){
-		const { maxValue, themesValues, generalValue } = this.state
+		const { themesValues, generalValue } = this.state
 
 		let questions = 0
 

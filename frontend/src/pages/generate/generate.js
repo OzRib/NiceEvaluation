@@ -1,7 +1,5 @@
 import React from 'react';
-import { Header, ContentBox, GenerateForm } from '../../components';
-import { checkLogin, userControl } from '../../communication';
-import { LoadingPage } from '../';
+import { ContentBox, GenerateForm } from '../../components';
 
 export default function Generate({match:{params}}){
 	const subjectId = params.id

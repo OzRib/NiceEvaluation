@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Badge } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { ListThemeBadges } from './';
 
 export default function Question({questao, position}){

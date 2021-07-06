@@ -1,7 +1,7 @@
 import React from 'react';
-import { ListGenerateThemes, GenerateTheme, GenerateOptions } from './';
-import { Form, Button } from 'react-bootstrap';
-import { getThemes, getThemesExtra, sendToGenerate } from '../communication';
+import { ListGenerateThemes, GenerateOptions } from './';
+import { Form } from 'react-bootstrap';
+import { getThemes, getThemesExtra } from '../communication';
 
 export default function GenerateForm({subjectId}){
 	const [temas, setTemas] = React.useState([])

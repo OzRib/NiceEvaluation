@@ -1,7 +1,5 @@
 import React from 'react';
-import { Header, ListQuestions } from '../../components';
-import { checkLogin, userControl } from '../../communication';
-import { LoadingPage } from '../';
+import { ListQuestions } from '../../components';
 
 export default function Theme({match:{params}}){
 	const { subjId, theme } = params
