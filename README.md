@@ -11,9 +11,9 @@ The teacher requested me to do an evaluation generator system and I thougth to d
 This is the result☺️ ❤️
 
 # How to install?
-The first step is configure the environment variables
-You can view an example of the environment variables in file example.env
-[environment example](https://github.com/OzRib/NiceEvaluation/blob/master/example.env)
+The first step is configure the environment variables.
+You can view an example of the environment variables in the file 
+[example.env](https://github.com/OzRib/NiceEvaluation/blob/master/example.env).
 
 The project server is builded to run in Linux servers.
 To install project in the Linux server, first install docker in your Linux distro.
