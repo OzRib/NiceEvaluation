@@ -2,7 +2,8 @@
 A web & mobile application to generate evaluations of my computer course.
 The website is builded with React.js.
 The mobile is builded with React Native.
-The backend is builded with pure PHP
+The backend is builded with PHP and Ruby.
+I have used shell scripts to test archives links and to install the project in server. 
 
 # How to install?
 The first step is configure the environment variables
