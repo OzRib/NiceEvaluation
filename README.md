@@ -1,4 +1,10 @@
-# How to install
+#What is this?
+A web & mobile application to generate evaluations of an informatical course.
+The website is builded with React.js.
+The mobile is builded with React Native.
+The backend is builded with pure PHP
+
+# How to install?
 The first step is configure the environment variables
 You can view an example of the environment variables in file example.env
 [environment example](https://github.com/OzRib/NiceEvaluation/blob/master/example.env)
