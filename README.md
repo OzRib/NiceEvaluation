@@ -1,11 +1,11 @@
-#What is this?
+# What is this?
 A web & mobile application to generate evaluations of my computer course.
 The website is builded with React.js.
 The mobile is builded with React Native.
 The backend is builded with PHP and Ruby.
 I have used shell scripts to test archives links and to install the project in server. 
 
-#Why is have builded?
+# Why is have builded?
 This project have builded because a great work in  my computer course. 
 The teacher requested me to do an evaluation generator system and I thougth to do it with the tecnologies I know.
 This is the result☺️ ❤️
