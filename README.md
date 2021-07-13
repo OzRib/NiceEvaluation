@@ -1,5 +1,5 @@
 #What is this?
-A web & mobile application to generate evaluations of an informatical course.
+A web & mobile application to generate evaluations of my computer course.
 The website is builded with React.js.
 The mobile is builded with React Native.
 The backend is builded with pure PHP
@@ -10,7 +10,7 @@ You can view an example of the environment variables in file example.env
 [environment example](https://github.com/OzRib/NiceEvaluation/blob/master/example.env)
 
 The project server is builded to run in Linux servers.
-To install projcet in the Linux server, first install docker in your Linux distro.
+To install project in the Linux server, first install docker in your Linux distro.
 
 ## Install docker in Debian/Ubuntu
 To install in your Debian, Ubuntu or derivated, aplly this commands in your terminal with root user.
