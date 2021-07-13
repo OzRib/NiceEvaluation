@@ -44,3 +44,8 @@ To this, execute in your terminal the commands bellow with superuser.
 	git clone https://github.com/OzRib/NiceEvaluation.git
 	./NiceEvaluation/install.sh
 ```
+
+And now, access the docker ip what you have cofigured by your browser.
+Same this: `http://172.17.0.1`
+
+Have fun 😄
