@@ -5,6 +5,11 @@ The mobile is builded with React Native.
 The backend is builded with PHP and Ruby.
 I have used shell scripts to test archives links and to install the project in server. 
 
+#Why is have builded?
+This project have builded because a great work in  my computer course. 
+The teacher requested me to do an evaluation generator system and I thougth to do it with the tecnologies I know.
+This is the result☺️ ❤️
+
 # How to install?
 The first step is configure the environment variables
 You can view an example of the environment variables in file example.env
