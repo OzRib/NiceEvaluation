@@ -13,10 +13,10 @@ export default function Login(){
     async function onLoad(){
         const actions = {
             'admin': function(){
-                window.location.href = '/#/admin-choice'
+		window.location.href = '/#/admin-choice'
             },
             'user': function(){
-                window.location.href = '/#/teacher-page'
+		window.location.href = '/#/home/teacher-page'
             }
         }
 
@@ -41,10 +41,10 @@ export default function Login(){
         event.preventDefault()
         const actions = {
             'admin' : function(){
-                window.location.href = '/#/admin-choice'
+		window.location.href = '/#/admin-choice'
             },
             'user': function(){
-                window.location.href = '/#/teacher-page'
+		window.location.href = '/#/home/teacher-page'
             },
             'error': function(error){
                 setError(error)
