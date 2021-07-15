@@ -11,7 +11,7 @@ export default function AdminChoice(){
     async function onLoad(){
         const actions = {
             'user': function(){
-                window.location.href = '/#/teacher-page'
+		window.location.href = '/#/home/teacher-page'
             },
             'error': function(){
                 window.location.href = '/#/'
