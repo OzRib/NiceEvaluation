@@ -10,6 +10,15 @@ This project have builded because a great work in  my computer course.
 The teacher requested me to do an evaluation generator system and I thougth to do it with the tecnologies I know.
 This is the result☺️ ❤️
 
+# In bellow, screenshots of website
+
+![login](https://github.com/OzRib/NiceEvaluation/blob/master/screenshots/login.png)
+![generate](https://github.com/OzRib/NiceEvaluation/blob/master/screenshots/generate.png)
+![generate-modal](https://github.com/OzRib/NiceEvaluation/blob/master/screenshots/generate-modal.png)
+![manage-users](https://github.com/OzRib/NiceEvaluation/blob/master/screenshots/manage-users.png)
+![show-questions](https://github.com/OzRib/NiceEvaluation/blob/master/screenshots/show-questions.png)
+![teacher-page](https://github.com/OzRib/NiceEvaluation/blob/master/screenshots/teacher-page.png)
+
 # How to install?
 The first step is configure the environment variables.
 You can view an example of the environment variables in the file 
