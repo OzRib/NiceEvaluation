@@ -1,8 +1,6 @@
 # What is this?
 A web & mobile application to generate evaluations of my computer course.
-The website is builded with React.js.
-The mobile is builded with React Native.
-The backend is builded with PHP and Ruby.
+The project has builded with React.js, React Native, PHP and Ruby.
 I have used shell scripts to test archives links and to install the project in server. 
 
 # Why is have builded?
