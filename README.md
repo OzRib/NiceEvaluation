@@ -3,12 +3,12 @@ A web & mobile application to generate evaluations of my computer course.
 The project has builded with React.js, React Native, PHP and Ruby.
 I have used shell scripts to test archives links and to install the project in server. 
 
-# Why is have builded?
-This project have builded because a great work in  my computer course. 
+# What is the purpose of this creation?
+This project has been built as a school project. 
 The teacher requested me to do an evaluation generator system and I thougth to do it with the tecnologies I know.
 This is the result☺️ ❤️
 
-# In bellow, screenshots of website
+# Screenshots of website below
 
 ![login](https://github.com/OzRib/NiceEvaluation/blob/master/screenshots/login.png)
 ![generate](https://github.com/OzRib/NiceEvaluation/blob/master/screenshots/generate.png)
